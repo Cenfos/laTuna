@@ -1,0 +1,95 @@
+---
+import { Icon } from 'astro-icon';
+---
+<header>
+	<div class="header-content">
+		<nav id="main-nav">
+			<ul>
+				<li><a href="/">Inicio</a></li>
+				<li><a href="/permacultura">Permacultura</a></li>
+				<li><a href="/talleres">Talleres</a></li>
+				<li><a href="/galeria">Galería</a></li>
+				<li class="contact-link"><a href="/contacto">Contacto</a></li>
+			</ul>
+		</nav>
+		<button id="menu-toggle" aria-label="Toggle menu">
+			<Icon name="mdi:menu" width="24" height="24" />
+		</button>
+	</div>
+</header>
+
+<script>
+	const menuToggle = document.getElementById('menu-toggle');
+	const mainNav = document.getElementById('main-nav');
+
+	if (menuToggle && mainNav) {
+		menuToggle.addEventListener('click', () => {
+			mainNav.classList.toggle('show');
+		});
+	}
+</script>
+
+<style>
+	header {
+		background-color: var(--color-primary);
+		padding: 1rem;
+	}
+	.header-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	#menu-toggle {
+		display: none;
+		background: none;
+		border: none;
+		color: var(--color-text-light);
+		cursor: pointer;
+	}
+	nav ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	nav li {
+		margin: 0 1rem;
+	}
+	nav a {
+		color: var(--color-text-light);
+		text-decoration: none;
+		font-weight: bold;
+	}
+	nav a:hover {
+		text-decoration: underline;
+	}
+	.contact-link {
+		margin-left: auto;
+	}
+
+	@media (max-width: 768px) {
+		#menu-toggle {
+			display: block;
+		}
+		nav {
+			display: none;
+		}
+		nav.show {
+			display: block;
+		}
+		nav ul {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		nav li {
+			margin: 0.5rem 0;
+		}
+		.contact-link {
+			margin-left: 0;
+		}
+	}
+</style>

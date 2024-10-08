@@ -1,0 +1,86 @@
+---
+const currentYear = new Date().getFullYear();
+---
+<footer>
+	<div class="footer-content">
+		<div class="footer-section">
+			<h3>Páginas legales</h3>
+			<ul>
+				<li><a href="/politica-privacidad">Política de privacidad</a></li>
+				<li><a href="/politica-cookies">Política de cookies</a></li>
+				<li><a href="/aviso-legal">Aviso legal</a></li>
+			</ul>
+		</div>
+		<div class="footer-section">
+			<h3>Contacto</h3>
+			<ul>
+				<li><a href="/contacto">Contacto</a></li>
+				<li><a href="https://www.instagram.com/tu_cuenta" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+			</ul>
+		</div>
+		<div class="footer-section">
+			<h3>Webs amigas</h3>
+			<ul>
+				<li><a href="https://ejemplo1.com" target="_blank" rel="noopener noreferrer">Ejemplo 1</a></li>
+				<li><a href="https://ejemplo2.com" target="_blank" rel="noopener noreferrer">Ejemplo 2</a></li>
+				<li><a href="https://ejemplo3.com" target="_blank" rel="noopener noreferrer">Ejemplo 3</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="copyright">
+		<p>&copy; {currentYear} Blog de Permacultura. Todos los derechos reservados.</p>
+	</div>
+</footer>
+
+<style>
+	footer {
+		background-color: var(--color-primary);
+		color: var(--color-text-light);
+		padding: 2rem 1rem;
+		margin-top: 2rem;
+	}
+	.footer-content {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.footer-section {
+		flex: 1;
+		min-width: 200px;
+		margin-bottom: 1rem;
+	}
+	h3 {
+		color: var(--color-text-light);
+		margin-bottom: 0.5rem;
+	}
+	ul {
+		list-style-type: none;
+		padding: 0;
+	}
+	li {
+		margin-bottom: 0.5rem;
+	}
+	a {
+		color: var(--color-text-light);
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	.copyright {
+		text-align: center;
+		margin-top: 2rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--color-text-light);
+	}
+	@media (max-width: 768px) {
+		.footer-content {
+			flex-direction: column;
+		}
+		.footer-section {
+			margin-bottom: 1.5rem;
+		}
+	}
+</style>

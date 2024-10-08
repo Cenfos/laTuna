@@ -1,0 +1,103 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+export async function getStaticPaths() {
+  // En un proyecto real, obtendrías esta información de tu CMS o sistema de archivos
+  const allPosts = [
+    {
+      title: 'Introducción a la Permacultura',
+      date: '2023-06-01',
+      slug: 'introduccion-permacultura',
+      excerpt: 'Descubre los principios básicos de la permacultura y cómo aplicarlos en tu vida diaria.',
+      image: '/images/intro-permacultura.jpg',
+      category: 'Permacultura'
+    },
+    {
+      title: 'Diseño de Huertos Urbanos',
+      date: '2023-06-15',
+      slug: 'diseno-huertos-urbanos',
+      excerpt: 'Aprende a diseñar y mantener un huerto urbano productivo y sostenible.',
+      image: '/images/huerto-urbano.jpg',
+      category: 'Huertos'
+    },
+    {
+      title: 'Sistemas de Captación de Agua',
+      date: '2023-07-01',
+      slug: 'sistemas-captacion-agua',
+      excerpt: 'Explora diferentes métodos para captar y aprovechar el agua de lluvia en tu hogar o huerto.',
+      image: '/images/captacion-agua.jpg',
+      category: 'Sostenibilidad'
+    },
+    {
+      title: 'Compostaje Doméstico',
+      date: '2023-07-15',
+      slug: 'compostaje-domestico',
+      excerpt: 'Descubre cómo crear tu propio compost y reducir tus residuos orgánicos.',
+      image: '/images/compostaje.jpg',
+      category: 'Sostenibilidad'
+    },
+    {
+      title: 'Plantas Compañeras',
+      date: '2023-08-01',
+      slug: 'plantas-companeras',
+      excerpt: 'Aprende sobre las asociaciones beneficiosas entre plantas y cómo aplicarlas en tu huerto.',
+      image: '/images/plantas-companeras.jpg',
+      category: 'Huertos'
+    }
+  ];
+
+  const uniqueCategories = [...new Set(allPosts.map(post => post.category))];
+
+  return uniqueCategories.map(category => {
+    const filteredPosts = allPosts.filter(post => post.category === category);
+    return {
+      params: { category: category.toLowerCase() },
+      props: { category, posts: filteredPosts },
+    };
+  });
+}
+
+const { category, posts = [] } = Astro.props;
+---
+
+<Layout title={`Posts de ${category} - Blog de Permacultura`}>
+  <h1>Posts de {category}</h1>
+  
+  <section class="category-posts">
+    {posts.length > 0 ? (
+      posts.map(post => (
+        <PostCard
+          title={post.title}
+          date={post.date}
+          slug={post.slug}
+          excerpt={post.excerpt}
+          image={post.image}
+          category={post.category}
+        />
+      ))
+    ) : (
+      <p>No hay posts disponibles en esta categoría.</p>
+    )}
+  </section>
+</Layout>
+
+<style>
+  h1 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+
+  .category-posts {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
