@@ -2,13 +2,13 @@ import { c as createComponent, r as renderTemplate, m as maybeRenderHead, u as u
 import 'kleur/colors';
 import 'clsx';
 
-const html = "<p>M﻿enudo río el Verdugo, como baja!!!</p>";
+const html = "<p>E﻿Ste sera el nuevo logoooo</p>";
 
-				const frontmatter = {"title":"Talando árboles","date":"2024-10-09T12:43:29.846Z","category":"Sostenibilidad","image":"/images/rioverdugo4.jpg","excerpt":"Vamos a cortar todo!"};
-				const file = "C:/Users/cami_/Desktop/ProyectosWeb/eirado/src/content/posts/talando-árboles.md";
+				const frontmatter = {"title":"Nuevo post número 1","date":"2024-10-09T16:21:03.150Z","category":"Sintrópica","image":"/images/eiradoLogo.webp","excerpt":"Nuevo logo de la web"};
+				const file = "C:/Users/cami_/Desktop/ProyectosWeb/eirado/src/content/posts/nuevo-post-número-1.md";
 				const url = undefined;
 				function rawContent() {
-					return "M﻿enudo río el Verdugo, como baja!!!";
+					return "E﻿Ste sera el nuevo logoooo";
 				}
 				function compiledContent() {
 					return html;

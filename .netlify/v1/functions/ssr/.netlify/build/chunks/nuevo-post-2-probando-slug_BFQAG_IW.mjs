@@ -2,13 +2,13 @@ import { c as createComponent, r as renderTemplate, m as maybeRenderHead, u as u
 import 'kleur/colors';
 import 'clsx';
 
-const html = "<p>D﻿e la huertaaaa</p>";
+const html = "<p>A﻿qui unos paisanos con el sacho a reventarlo todo .)</p>";
 
-				const frontmatter = {"title":"Tomates de la huerta!","date":"2024-10-09T12:44:45.784Z","category":"Huertos","image":"/images/permacultura4.jpg","excerpt":"Se venden tomates!"};
-				const file = "C:/Users/cami_/Desktop/ProyectosWeb/eirado/src/content/posts/tomates-de-la-huerta.md";
+				const frontmatter = {"title":"Nuevo post 2 probando slug","date":"2024-10-09T16:47:34.702Z","category":"Huertos","image":"/images/Permacultura3.jpg","excerpt":"Sachando duramente"};
+				const file = "C:/Users/cami_/Desktop/ProyectosWeb/eirado/src/content/posts/nuevo-post-2-probando-slug.md";
 				const url = undefined;
 				function rawContent() {
-					return "D﻿e la huertaaaa";
+					return "A﻿qui unos paisanos con el sacho a reventarlo todo .)";
 				}
 				function compiledContent() {
 					return html;

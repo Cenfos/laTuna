@@ -1,7 +1,7 @@
 import { c as createComponent, r as renderTemplate, d as renderComponent, b as createAstro, m as maybeRenderHead } from '../../chunks/astro/server_DpEYlbkM.mjs';
 import 'kleur/colors';
 import { $ as $$Layout } from '../../chunks/Layout_BCoJEila.mjs';
-import { $ as $$PostCard } from '../../chunks/PostCard_CRauBqj2.mjs';
+import { $ as $$PostCard } from '../../chunks/PostCard_DDgBHJBm.mjs';
 /* empty css                                         */
 export { renderers } from '../../renderers.mjs';
 

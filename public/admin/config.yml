@@ -10,10 +10,10 @@ collections:
     label: "Posts"
     folder: "src/content/posts"
     create: true
-    slug: "{{title | slugify}}"
+    slug: "{{slug}}"  # Puedes mantener esto para usarlo más adelante
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string", required: false}  
+      - {label: "Slug", name: "slug", widget: "string", required: true}  # Campo slug manual
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Category", name: "category", widget: "select", options: ["Permacultura", "Huertos", "Sostenibilidad", "Talleres", "Sintrópica"]}
       - {label: "Featured Image", name: "image", widget: "image", required: false}
