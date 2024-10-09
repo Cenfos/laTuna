@@ -2,79 +2,28 @@
 import Layout from '../../layouts/Layout.astro';
 import PostCard from '../../components/PostCard.astro';
 
-// In a real project, you'd fetch all posts from your CMS or file system
-const posts = [
-	{
-		title: 'Introducción a la Permacultura',
-      date: '2023-06-01',
-      slug: 'introduccion-permacultura',
-      excerpt: 'Descubre los principios básicos de la permacultura y cómo aplicarlos en tu vida diaria.',
-      image: '/assets/images/Permacultura1.jpg',
-      category: 'Permacultura'
-	},
-	{
-		title: 'Diseño de Huertos Urbanos',
-		date: '2023-06-15',
-		slug: 'diseno-huertos-urbanos',
-		excerpt: 'Aprende a diseñar y mantener un huerto urbano productivo y sostenible.',
-		image: '/images/huerto-urbano.jpg'
-	},
-	{
-		title: 'Sistemas de Captación de Agua',
-		date: '2023-07-01',
-		slug: 'sistemas-captacion-agua',
-		excerpt: 'Explora diferentes métodos para captar y aprovechar el agua de lluvia en tu hogar o huerto.',
-		image: '/images/captacion-agua.jpg'
-	},
-	{
-		title: 'Compostaje Doméstico',
-		date: '2023-07-15',
-		slug: 'compostaje-domestico',
-		excerpt: 'Descubre cómo crear tu propio compost y reducir tus residuos orgánicos.',
-		image: '/images/compostaje.jpg'
-	},
-	{
-		title: 'Plantas Compañeras',
-		date: '2023-08-01',
-		slug: 'plantas-companeras',
-		excerpt: 'Aprende sobre las asociaciones beneficiosas entre plantas y cómo aplicarlas en tu huerto.',
-		image: '/images/plantas-companeras.jpg'
-	},
-	{
-		title: 'Permacultura y Biodiversidad',
-		date: '2023-08-15',
-		slug: 'permacultura-biodiversidad',
-		excerpt: 'Descubre cómo la permacultura fomenta y se beneficia de la biodiversidad en los ecosistemas.',
-		image: '/images/biodiversidad.jpg'
-	},
-	{
-		title: 'Energías Renovables en el Hogar',
-		date: '2023-09-01',
-		slug: 'energias-renovables-hogar',
-		excerpt: 'Explora opciones para implementar energías renovables en tu hogar y reducir tu huella de carbono.',
-		image: '/images/energias-renovables.jpg'
-	}
-];
+// Utiliza Astro.glob para leer todos los archivos Markdown de posts en src/content/post
+const posts = await Astro.glob('../../content/post/*.md');
 
-// Sort posts by date (most recent first)
-posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+// Ordena los posts por fecha (si existe en el frontmatter)
+posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 ---
 
 <Layout title="Todos los Posts - Blog de Permacultura">
-	<h1>Todos los Posts</h1>
-	
-	<section class="posts-grid">
-		{posts.map(post => (
-			<PostCard
-				title={post.title}
-				date={post.date}
-				slug={post.slug}
-				excerpt={post.excerpt}
-				image={post.image}
-				category=""
-			/>
-		))}
-	</section>
+    <h1>Todos los Posts</h1>
+    
+    <section class="posts-grid">
+        {posts.map(post => (
+            <PostCard
+                title={post.frontmatter.title}
+                date={post.frontmatter.date}
+                slug={post.url} 
+                excerpt={post.frontmatter.excerpt}
+                image={post.frontmatter.image}
+                category={post.frontmatter.category}
+            />
+        ))}
+    </section>
 </Layout>
 
 <style>
