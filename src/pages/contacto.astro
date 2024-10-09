@@ -1,48 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Contacto">
-	<h1>Contacto</h1>
-	<p>¿Tienes preguntas sobre permacultura o nuestros talleres? ¡Contáctanos!</p>
-	
-	<form>
-		<label for="name">Nombre:</label>
-		<input type="text" id="name" name="name" required>
-		
-		<label for="email">Correo electrónico:</label>
-		<input type="email" id="email" name="email" required>
-		
-		<label for="message">Mensaje:</label>
-		<textarea id="message" name="message" required></textarea>
-		
-		<button type="submit">Enviar</button>
-	</form>
+  <h1>Contacto</h1>
+  <p>¿Tienes preguntas sobre permacultura o nuestros talleres? ¡Contáctanos!</p>
+
+  <form name="contact" method="POST" data-netlify="true">
+    <p>
+      <label>Nombre <input type="text" name="name" /></label>
+    </p>
+    <p>
+      <label>Email <input type="email" name="email" /></label>
+    </p>
+	<p>
+		<label>Mensaje <textarea name="message"></textarea></label>
+	</p>	
+    <p>
+      <button type="submit">Enviar</button>
+    </p>
+  </form>
 </Layout>
 
 <style>
-	form {
-		display: flex;
-		flex-direction: column;
-		max-width: 500px;
-		margin: 0 auto;
-	}
-	label {
-		margin-top: 1rem;
-	}
-	input, textarea {
-		padding: 0.5rem;
-		margin-top: 0.25rem;
-	}
-	button {
-		background-color: #4CAF50;
-		color: white;
-		border: none;
-		padding: 0.5rem 1rem;
-		margin-top: 1rem;
-		cursor: pointer;
-	}
-	button:hover {
-		background-color: #45a049;
-	}
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  label {
+    margin-top: 1rem;
+  }
+  input,
+  textarea {
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
 </style>
