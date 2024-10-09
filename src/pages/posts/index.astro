@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PostCard from '../../components/PostCard.astro';
 
 // Utiliza Astro.glob para leer todos los archivos Markdown de posts en src/content/post
-const posts = await Astro.glob('../../content/post/*.md');
+const posts = await Astro.glob('../content/posts/*.md');
 
 // Ordena los posts por fecha (si existe en el frontmatter)
 posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
@@ -17,7 +17,7 @@ posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontma
             <PostCard
                 title={post.frontmatter.title}
                 date={post.frontmatter.date}
-                slug={post.url} 
+                slug={post.url ?? ''} 
                 excerpt={post.frontmatter.excerpt}
                 image={post.frontmatter.image}
                 category={post.frontmatter.category}
@@ -25,7 +25,6 @@ posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontma
         ))}
     </section>
 </Layout>
-
 <style>
 	h1 {
 		font-size: 2.5rem;
@@ -46,3 +45,4 @@ posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontma
 		}
 	}
 </style>
+

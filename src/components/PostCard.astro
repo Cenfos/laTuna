@@ -6,23 +6,21 @@ interface Props {
 	excerpt: string;
 	image: string;
 	category: string;
-}
-
-const { title, date, slug, excerpt, image, category } = Astro.props;
+  }
+  
+  const { title, date, slug, excerpt, image, category } = Astro.props;
 ---
-
-<article class="post-card">
+  
+  <article class="post-card">
 	<div class="post-image">
-		<img src={image} alt={title} />
+	  <img src={image} alt={title} />
 	</div>
 	<div class="post-content">
-		<h2><a href={`/posts/${slug}`}>{title}</a></h2>
-		<p class="date">{date}</p>
-		<p class="category">{category}</p>
-		<p class="excerpt">{excerpt}</p>
-		<a href={`/posts/${slug}`} class="read-more">Leer más</a>
-	</div>
-</article>
+	  <h2><a href={`/posts/${slug}`}>{title}</a></h2> <p class="date">{date}</p>
+	  <p class="category">{category}</p>
+	  <p class="excerpt">{excerpt}</p>
+	  <a href={`/posts/${slug}`}>Leer más</a> </div>
+  </article>
 
 <style>
 	.post-card {
