@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PostCard from '../components/PostCard.astro';
+
+// Usar Astro.glob para obtener los posts de la carpeta src/content/post
+const posts = await Astro.glob('../content/posts/*.md');
+
+// Ordenar los posts por fecha, si existe en el frontmatter
+posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+
+// Limitar a los 5 posts más recientes
+const recentPosts = posts.slice(0, 5);
+
+// Obtener las categorías únicas de los posts
+const categories = [...new Set(posts.map(post => post.frontmatter.category))];
+---
+
+<Layout title="Blog de Permacultura">
+  <h1>Bienvenido al Blog de Permacultura</h1>
+  <p class="intro">Explora nuestros artículos sobre permacultura, sostenibilidad y vida en armonía con la naturaleza.</p>
+  
+  <nav class="categories">
+    <h2>Categorías:</h2>
+    <ul>
+      {categories.map(category => (
+        <li><a href={`/category/${category.toLowerCase()}`}>{category}</a></li>
+      ))}
+    </ul>
+  </nav>
+  
+  <section class="recent-posts">
+    {recentPosts.map(post => (
+      <PostCard
+        title={post.frontmatter.title}
+        date={post.frontmatter.date}
+        slug={post.url} 
+        excerpt={post.frontmatter.excerpt}
+        image={post.frontmatter.image}
+        category={post.frontmatter.category}
+      />
+    ))}
+  </section>
+
+  <div class="view-all-container">
+    <a href="/posts" class="view-all-button">Ver todos los posts</a>
+  </div>
+</Layout>
+
+<style>
+  h1 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .intro {
+    font-size: 1.2rem;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+  }
+
+  .categories {
+    margin-bottom: 2rem;
+  }
+
+  .categories h2 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .categories ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .categories li a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .categories li a:hover {
+    background-color: var(--color-primary);
+  }
+
+  .recent-posts {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .view-all-container {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .view-all-button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .view-all-button:hover {
+    background-color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .intro {
+      font-size: 1rem;
+    }
+  }
+</style>

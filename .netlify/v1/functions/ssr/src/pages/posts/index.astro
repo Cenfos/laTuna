@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+// Utiliza Astro.glob para leer todos los archivos Markdown de posts en src/content/post
+const posts = await Astro.glob('../content/posts/*.md');
+
+// Ordena los posts por fecha (si existe en el frontmatter)
+posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+---
+
+<Layout title="Todos los Posts - Blog de Permacultura">
+    <h1>Todos los Posts</h1>
+    
+    <section class="posts-grid">
+        {posts.map(post => (
+            <PostCard
+                title={post.frontmatter.title}
+                date={post.frontmatter.date}
+                slug={post.url ?? ''} 
+                excerpt={post.frontmatter.excerpt}
+                image={post.frontmatter.image}
+                category={post.frontmatter.category}
+            />
+        ))}
+    </section>
+</Layout>
+<style>
+	h1 {
+		font-size: 2.5rem;
+		color: #2c3e50;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+
+	.posts-grid {
+		display: grid;
+		gap: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	}
+
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 2rem;
+		}
+	}
+</style>
+
