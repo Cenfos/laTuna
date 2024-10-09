@@ -18,7 +18,9 @@ const { title, date, slug, excerpt, image, category } = Astro.props;
     <img src={image} alt={title} />
   </div>
   <div class="post-content">
-    <h2><a href={`/posts/${slug}`}>{title}</a></h2>
+    <h2>
+      <a href={`/posts/${slug}`}>{title}</a>
+    </h2>
     <p class="date">{new Date(date).toLocaleDateString()}</p> <!-- Formateo de fecha -->
     <p class="category">{category}</p>
     <p class="excerpt">{excerpt}</p>
