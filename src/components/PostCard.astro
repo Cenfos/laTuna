@@ -16,10 +16,11 @@ interface Props {
 	  <img src={image} alt={title} />
 	</div>
 	<div class="post-content">
-	  <h2><a href={`/posts/${slug}`}>{title}</a></h2> <p class="date">{date}</p>
+	  <h2><a href={`/posts/${{slug}}`}>{title}</a></h2> <p class="date">{date}</p>
 	  <p class="category">{category}</p>
 	  <p class="excerpt">{excerpt}</p>
-	  <a href={`/posts/${slug}`}>Leer más</a> </div>
+	  <a href={`/posts/${slug}`}>Ver post</a>
+
   </article>
 
 <style>
