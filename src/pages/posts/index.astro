@@ -1,30 +1,32 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
 
-// Utiliza Astro.glob para leer todos los archivos Markdown de posts en src/content/posts
-const posts = await Astro.glob('../content/posts/*.md');
+// Obtener todos los posts
+const posts = await getCollection('posts');
 
-// Ordena los posts por fecha (si existe en el frontmatter)
-posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+
 ---
 
 <Layout title="Todos los Posts - Blog de Permacultura">
-    <h1>Todos los Posts</h1>
-    
-    <section class="posts-grid">
-        {posts.map(post => (
-            <PostCard
-                title={post.frontmatter.title}
-                date={post.frontmatter.date}
-                slug={post.frontmatter.slug ?? post.url} 
-                excerpt={post.frontmatter.excerpt}
-                image={post.frontmatter.image}
-                category={post.frontmatter.category}
-            />
-        ))}
-    </section>
+	<h1>Todos los Posts</h1>
+
+	<section>
+		{posts.map((post) => (
+			<PostCard
+				title={post.data.title}
+				date={post.data.date}
+				slug={post.slug}
+				excerpt={post.data.excerpt}
+				image={post.data.image}
+				category={post.data.category}
+			/>
+		))}
+	</section>
 </Layout>
+
+
 
 <style>
 	h1 {

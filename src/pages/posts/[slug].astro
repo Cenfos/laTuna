@@ -1,28 +1,26 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-const { slug } = Astro.params;
-const post = await Astro.glob('../../content/posts/*.md').then((posts) =>
-  posts.find((p) => p.frontmatter.slug === slug)
-);
+// Obtener todos los posts
+const posts = await getCollection('posts');
 
-// Verificamos si se encontró el post
+// Obtener el post actual basándonos en el slug de la ruta
+const { slug } = Astro.params;
+const post = posts.find((p) => p.slug === slug);
+
 if (!post) {
   throw new Error('Post no encontrado');
 }
-
-const { title, date, content, image, category } = post.frontmatter;
 ---
 
-<Layout title={title}>
+<Layout title={post.data.title}>
   <article>
-    <header>
-      <h1>{title}</h1>
-      <p>{date}</p>
-      <img src={image} alt={title} />
-    </header>
-    <section>
-      <p>{content}</p>
-    </section>
+    <h1>{post.data.title}</h1>
+    <p><em>{new Date(post.data.date).toLocaleDateString()}</em></p>
+    <p>{post.data.category}</p>
+    <img src={post.data.image} alt={post.data.title} />
+    <div set:html={post.body}></div>
   </article>
 </Layout>
+

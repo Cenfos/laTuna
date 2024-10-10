@@ -1,18 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PostCard from '../components/PostCard.astro';
+import { collections } from '../content/config'; 
 
-// Usar Astro.glob para obtener los posts de la carpeta src/content/post
+// Usamos Astro.glob para obtener los posts de la carpeta src/content/post
 const posts = await Astro.glob('../content/posts/*.md');
 
-// Ordenar los posts por fecha, si existe en el frontmatter
-posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+// Validar los posts según el esquema definido en config.ts
+const validPosts = posts.filter((post) => {
+  const { frontmatter } = post;
+  return frontmatter.title && frontmatter.slug && frontmatter.date && frontmatter.category && frontmatter.image && frontmatter.excerpt;
+});
+
+// Ordenar los posts por fecha (descendente)
+validPosts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 
 // Limitar a los 5 posts más recientes
-const recentPosts = posts.slice(0, 5);
+const recentPosts = validPosts.slice(0, 5);
 
 // Obtener las categorías únicas de los posts
-const categories = [...new Set(posts.map(post => post.frontmatter.category))];
+const categories = [...new Set(validPosts.map(post => post.frontmatter.category))];
 ---
 
 <Layout title="Blog de Permacultura">
@@ -33,7 +40,7 @@ const categories = [...new Set(posts.map(post => post.frontmatter.category))];
       <PostCard
         title={post.frontmatter.title}
         date={post.frontmatter.date}
-        slug={post.url} 
+        slug={post.frontmatter.slug}  
         excerpt={post.frontmatter.excerpt}
         image={post.frontmatter.image}
         category={post.frontmatter.category}

@@ -1,5 +1,4 @@
 ---
-// Importación de tipos
 interface Props {
   title: string;
   date: string;
@@ -21,12 +20,13 @@ const { title, date, slug, excerpt, image, category } = Astro.props;
     <h2>
       <a href={`/posts/${slug}`}>{title}</a>
     </h2>
-    <p class="date">{new Date(date).toLocaleDateString()}</p> <!-- Formateo de fecha -->
+    <p class="date">{new Date(date).toLocaleDateString()}</p>
     <p class="category">{category}</p>
     <p class="excerpt">{excerpt}</p>
     <a href={`/posts/${slug}`} class="read-more">Ver post</a>
   </div>
 </article>
+
 
 <style>
 	.post-card {
