@@ -6,8 +6,6 @@ category: Permacultura
 image: /images/rioverdugo4.jpg
 excerpt: Rio Verdugo tras la crecida
 ---
-
-
 ### Río Verdugo: Un Tesoro Natural en Pontecaldelas
 
 El **río Verdugo** es un emblemático río de Galicia que serpentea a través de la hermosa localidad de **Pontecaldelas**, situada en la provincia de **Pontevedra**. Este río, que nace en las montañas de la **Sierra del Suido**, fluye a lo largo de aproximadamente 35 kilómetros antes de desembocar en el **río Lérez**, contribuyendo así al rico ecosistema de la región.
@@ -31,10 +29,8 @@ El río Verdugo no solo es un atractivo natural, sino que también ofrece divers
 * **Piragüismo:** Las aguas tranquilas del río son ideales para la práctica de deportes acuáticos.
 * **Fotografía de Naturaleza:** El entorno escénico del río Verdugo proporciona innumerables oportunidades para los fotógrafos.
 
-![](/images/RioVerdugo3.jpg)
+![Otra imagen del verdugo](/images/RioVerdugo3.jpg "Pequeña presa del verdugo")
 
 #### Conclusión
 
 El río Verdugo es más que un simple curso de agua; es un elemento vital que enriquece la vida en Pontecaldelas. Su belleza natural y su importancia cultural lo convierten en un lugar digno de explorar y proteger. Ya sea que busques disfrutar de un día de pesca, caminar por sus senderos o simplemente relajarte junto a sus aguas, el río Verdugo es un destino que no decepciona.
-
-<!--EndFragment-->
