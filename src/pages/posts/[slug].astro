@@ -15,12 +15,11 @@ if (!post) {
 ---
 
 <Layout title={post.data.title}>
-  <article>
-    <h1>{post.data.title}</h1>
-    <p><em>{new Date(post.data.date).toLocaleDateString()}</em></p>
-    <p>{post.data.category}</p>
-    <img src={post.data.image} alt={post.data.title} />
-    <div set:html={post.body}></div>
+  <article class="post-article">
+    <h1 class="post-title">{post.data.title}</h1>
+    <p class="post-date"><em>{new Date(post.data.date).toLocaleDateString()}</em></p>
+    <p class="post-category">{post.data.category}</p>
+    <img class="post-image" src={post.data.image} alt={post.data.title} />
+    <div class="post-content" set:html={post.body}></div>
   </article>
 </Layout>
-

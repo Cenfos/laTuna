@@ -1,0 +1,369 @@
+/* Variables de Color */
+:root {
+	--color-background: #D6EFD8;
+	--color-text: #1A5319;
+	--color-primary: #508D4E;
+	--color-secondary: #80AF81;
+	--color-accent: #1A5319;
+	--color-text-light: #D6EFD8;
+	--shadow-light: rgba(0, 0, 0, 0.1);
+	--shadow-dark: rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos Globales */
+html {
+	font-family: system-ui, sans-serif;
+	background: var(--color-background);
+	color: var(--color-text);
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1;
+	padding: 2rem;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+section {
+	margin-bottom: 2rem;
+    text-align: justify;
+}
+/* Enlaces */
+a {
+	color: var(--color-accent);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Tipografía */
+h1, h2, h3, h4, h5, h6 {
+	color: var(--color-primary);
+	margin: 0; /* Evita márgenes indeseados */
+}
+
+/* Tarjeta de Enlace */
+.link-card {
+	list-style: none;
+	display: flex;
+	padding: 1px;
+	background-color: #23262d;
+	border-radius: 7px;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+	transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-card > a {
+	width: 100%;
+	text-decoration: none;
+	line-height: 1.4;
+	padding: calc(1.5rem - 1px);
+	border-radius: 8px;
+	color: white;
+	opacity: 0.8;
+	transition: opacity 0.3s ease; /* Transición para la opacidad */
+}
+
+.link-card:hover > a {
+	opacity: 1; /* Aumenta la opacidad al pasar el ratón */
+}
+
+.link-card:hover {
+	background-position: 0;
+	background-image: var(--accent-gradient);
+}
+
+.link-card:hover h2 {
+	color: rgb(var(--accent-light));
+}
+
+/* Estilo para el footer */
+footer {
+	width: 100%; /* Asegura que el footer ocupe el ancho completo */
+	padding: 1rem; /* Ajusta el padding según sea necesario */
+	background-color: var(--color-primary);
+	text-align: center; /* Centra el texto */
+	margin-top: 2rem;
+}
+
+.footer-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.footer-section {
+	flex: 1;
+	margin-bottom: 1rem;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+li {
+	margin-bottom: 0.5rem;
+}
+
+.copyright {
+	text-align: center;
+	margin-top: 2rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--color-text-light);
+}
+
+/* Header */
+header {
+	background-color: var(--color-primary);
+	padding: 1rem;
+}
+
+.header-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.logo {
+	width: 50px;
+	height: 50px;
+}
+
+#menu-toggle {
+	display: none;
+	background: none;
+	border: none;
+	color: var(--color-text-light);
+	cursor: pointer;
+	font-size: 24px;
+}
+
+.menu-title {
+	font-family: 'Qwitcher Grypen', sans-serif;
+	color: var(--color-text-light);
+	font-size: 34px;
+	text-align: center;
+	flex-grow: 1;
+}
+
+nav {
+	text-align: center;
+}
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+nav li {
+	margin: 0 1.5rem;
+}
+
+nav a {
+	color: var(--color-text);
+	font-weight: bold;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+nav a:hover {
+	background-color: rgba(140, 188, 133, 0.352);
+}
+
+/* Componente PostCard.astro */
+.post-card {
+	display: flex;
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	margin-bottom: 1.5rem; /* Agrega espacio entre tarjetas */
+}
+
+.post-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.post-image {
+	flex: 0 0 40%; /* Ancho inicial en pantallas grandes */
+	max-width: 40%;
+}
+
+.post-image img {
+	width: 100%;
+	height: auto; /* Cambiado a auto para mantener la proporción */
+	object-fit: cover;
+}
+
+.post-content {
+	flex: 1;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.post-card h2 {
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+	font-size: 1.5rem;
+}
+
+.post-card h2 a {
+	color: var(--color-accent);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.post-card h2 a:hover {
+	color: var(--color-primary);
+}
+
+.post-card .date, .post-card .category {
+	color: var(--color-secondary);
+	font-size: 0.9rem;
+	margin-bottom: 0.5rem;
+}
+
+.post-card .excerpt {
+	color: var(--color-accent);
+	margin-bottom: 1rem;
+	flex-grow: 1;
+}
+
+.read-more {
+	align-self: flex-start;
+	background-color: var(--color-primary);
+	color: var(--color-text-light);
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+	background-color: var(--color-accent);
+}
+
+/* Media queries para móviles */
+@media (max-width: 768px) {
+    .post-article {
+        max-width: 800px; /* Ajusta el ancho máximo como necesites */
+        margin: 0 auto; /* Centra el artículo */
+        padding: 1rem; /* Añade espacio interior */
+      }
+      
+      .post-title {
+        font-size: 2rem; /* Ajusta el tamaño del título */
+      }
+      
+	.post-card {
+		flex-direction: column; /* Cambia a columna en móviles */
+	}
+
+	.post-image {
+		flex: 0 0 auto; /* Permite que la imagen ocupe el ancho completo */
+		max-width: 100%; /* Ancho máximo de la imagen */
+        height: auto;
+	}
+
+	.post-content {
+		padding: 1rem; /* Menos padding en móviles */
+	}
+
+	.post-card h2 {
+		font-size: 1.25rem; /* Ajusta el tamaño del texto en móviles */
+	}
+	
+	.post-card .date, .post-card .category {
+		font-size: 0.8rem; /* Reduce el tamaño del texto en móviles */
+	}
+
+	.footer-content {
+		flex-direction: column; /* Ajusta la dirección de las secciones del footer */
+        width: 100%;
+	}
+
+	.footer-section {
+		margin-bottom: 1.5rem; /* Espacio entre secciones del footer */
+	}
+
+	#menu-toggle {
+		display: block; /* Muestra el botón de menú en móviles */
+	}
+
+	nav {
+		display: none; /* Esconde el menú por defecto */
+	}
+
+	nav.show {
+		display: block; /* Muestra el menú cuando está activo */
+		background-color: var(--color-primary);
+		position: fixed;
+		top: 70px;
+		left: 0;
+		width: 100%;
+	}
+
+	nav ul {
+		flex-direction: column; /* Cambia la dirección de la lista en móviles */
+		align-items: center;
+		padding: 1rem;
+	}
+
+	nav li {
+		margin: 0.5rem 0; /* Espacio entre los elementos del menú */
+	}
+
+	.post-card {
+		flex-direction: column; /* Asegura que las tarjetas se alineen en columna en móviles */
+	}
+
+	.post-image {
+		flex: 0 0 auto; /* Permite que la imagen ocupe el ancho completo */
+		max-width: 100%; /* Asegura que la imagen no exceda el ancho */
+	}
+}
+
+/* Estilos para el componente de categorías */
+.intro {
+	font-size: 1.2rem;
+	color: var(--color-text);
+	margin-bottom: 2rem;
+}
+
+.categories {
+	margin-bottom: 2rem;
+    color: var(--color-text);
+}
+
+.categories h2 {
+	font-size: 1.5rem;
+	color: var(--color-accent);
+    margin-bottom: 1rem;
+}  
+

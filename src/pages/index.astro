@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PostCard from '../components/PostCard.astro';
-import { collections } from '../content/config'; 
 
 // Usamos Astro.glob para obtener los posts de la carpeta src/content/post
 const posts = await Astro.glob('../content/posts/*.md');
@@ -52,85 +51,3 @@ const categories = [...new Set(validPosts.map(post => post.frontmatter.category)
     <a href="/posts" class="view-all-button">Ver todos los posts</a>
   </div>
 </Layout>
-
-<style>
-  h1 {
-    font-size: 2.5rem;
-    color: var(--color-primary);
-    margin-bottom: 1rem;
-  }
-
-  .intro {
-    font-size: 1.2rem;
-    color: var(--color-text);
-    margin-bottom: 2rem;
-  }
-
-  .categories {
-    margin-bottom: 2rem;
-  }
-
-  .categories h2 {
-    font-size: 1.5rem;
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
-  }
-
-  .categories ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .categories li a {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: var(--color-secondary);
-    color: var(--color-text-light);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-
-  .categories li a:hover {
-    background-color: var(--color-primary);
-  }
-
-  .recent-posts {
-    display: grid;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .view-all-container {
-    text-align: center;
-    margin-top: 2rem;
-  }
-
-  .view-all-button {
-    display: inline-block;
-    background-color: var(--color-primary);
-    color: var(--color-text-light);
-    padding: 0.8rem 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-
-  .view-all-button:hover {
-    background-color: var(--color-accent);
-  }
-
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .intro {
-      font-size: 1rem;
-    }
-  }
-</style>

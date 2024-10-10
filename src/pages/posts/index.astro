@@ -27,25 +27,3 @@ const posts = await getCollection('posts');
 </Layout>
 
 
-
-<style>
-	h1 {
-		font-size: 2.5rem;
-		color: #2c3e50;
-		margin-bottom: 2rem;
-		text-align: center;
-	}
-
-	.posts-grid {
-		display: grid;
-		gap: 2rem;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	}
-
-	@media (max-width: 768px) {
-		h1 {
-			font-size: 2rem;
-		}
-	}
-</style>
-
