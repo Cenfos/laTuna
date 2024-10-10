@@ -10,7 +10,12 @@ interface Props {
 
 // Desestructuración de las propiedades recibidas
 const { title, date, slug, excerpt, image, category } = Astro.props;
+
+// Verificar si el slug está llegando correctamente
+console.log('Slug en PostCard:', slug);
 ---
+
+
 
 <article class="post-card">
   <div class="post-image">
@@ -18,29 +23,29 @@ const { title, date, slug, excerpt, image, category } = Astro.props;
   </div>
   <div class="post-content">
     <h2>
-      <a href={`/posts/${slug}`}>{title}</a>
+      <a href={`/posts/${slug}`}>{title}</a> <!-- Uso correcto del slug -->
     </h2>
-    <p class="date">{new Date(date).toLocaleDateString()}</p>
+    <p class="date">{new Date(date).toLocaleDateString()}</p> <!-- Formateo de fecha -->
     <p class="category">{category}</p>
     <p class="excerpt">{excerpt}</p>
-    <a href={`/posts/${slug}`} class="read-more">Ver post</a>
+    <a href={`/posts/${slug}`} class="read-more">Ver post</a> <!-- Uso correcto del slug -->
   </div>
 </article>
-
 
 <style>
 	.post-card {
 		display: flex;
-		background-color: var(--color-background);
+		background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con un poco de opacidad */
+		border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil para mayor distinción */
 		border-radius: 8px;
 		overflow: hidden;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
 	}
 
 	.post-card:hover {
 		transform: translateY(-5px);
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Sombras más pronunciadas al pasar el ratón */
 	}
 
 	.post-image {

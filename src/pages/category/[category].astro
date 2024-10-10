@@ -1,57 +1,36 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import PostCard from '../../components/PostCard.astro';
 
-// Utiliza Astro.glob para leer todos los archivos Markdown de posts en src/content/posts
-const allPosts = await Astro.glob('../../content/posts/*.md');
+// Obtener todos los posts de la colección 'posts'
+const posts = await getCollection('posts');
 
-// Filtra las categorías, asegurando que cada post tiene una categoría válida
-const uniqueCategories = [
-  ...new Set(
-    allPosts
-      .filter(post => post.frontmatter.category) // Filtra solo los posts con una categoría definida
-      .map(post => post.frontmatter.category)
-  ),
-];
+// Obtener la categoría actual basándonos en la ruta
+const { category } = Astro.params;
 
-// Esta función se ejecuta en el proceso de compilación para generar rutas dinámicas
-export async function getStaticPaths() {
-  return uniqueCategories.map(category => {
-    return {
-      params: { category: category.toLowerCase() }, // Utiliza la categoría como parámetro de la URL
-      props: { category },  // Pasa la categoría como prop a la página
-    };
-  });
-}
-
-// Filtra los posts por categoría específica, asegurando que exista la categoría
-const { category } = Astro.props;
-
-// Verificamos si la categoría está definida antes de usar toLowerCase
-const filteredPosts = allPosts.filter(post => 
-  post.frontmatter.category && post.frontmatter.category.toLowerCase() === category?.toLowerCase()
+// Filtrar los posts por categoría específica
+const filteredPosts = posts.filter(post => 
+  post.data.category && post.data.category.toLowerCase() === category.toLowerCase()
 );
+
+// Manejo de error si no hay posts en la categoría
+if (filteredPosts.length === 0) {
+  throw new Error('No hay posts en esta categoría');
+}
 ---
 
-<!-- Contenido de la página -->
-<Layout title={`Posts de ${category ? category : 'Categoría Desconocida'} - Blog de Permacultura`}>
-  <h1>Posts de {category ? category : 'Categoría Desconocida'}</h1>
-  
+<Layout title={`Posts de ${category}`}>
+  <h1>Posts de {category}</h1>
   <section class="category-posts">
-    {filteredPosts.length > 0 ? (
-      filteredPosts.map(post => (
-        <PostCard
-          title={post.frontmatter.title}
-          date={post.frontmatter.date}
-          slug={post.url ?? ''} 
-          excerpt={post.frontmatter.excerpt}
-          image={post.frontmatter.image}
-          category={post.frontmatter.category}
-        />
-      ))
-    ) : (
-      <p>No hay posts disponibles en esta categoría.</p>
-    )}
+    {filteredPosts.map(post => (
+      <article>
+        <h2>{post.data.title}</h2>
+        <p><em>{new Date(post.data.date).toLocaleDateString()}</em></p>
+        <p>{post.data.category}</p>
+        <img src={post.data.image} alt={post.data.title} />
+        <div set:html={post.body}></div>
+      </article>
+    ))}
   </section>
 </Layout>
 

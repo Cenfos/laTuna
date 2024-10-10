@@ -1,31 +1,39 @@
 ---
 import { Icon } from 'astro-icon';
 ---
+<head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap">
+</head>
+
 <header>
 	<div class="header-content">
-		<nav id="main-nav">
-			<ul>
-				<li><img src="/assets/images/eiradoLogo.webp" alt="Logo" width="70" height="70"></a></li>
-				<li><a href="/">Inicio</a></li>
-				<li><a href="/permacultura">Permacultura</a></li>
-				<li><a href="/talleres">Talleres</a></li>
-				<li><a href="/galeria">Galería</a></li>
-				<li class="contact-link"><a href="/contacto">Contacto</a></li>
-			</ul>
-		</nav>
+		<a href="/">
+			<img src="/assets/images/eiradoLogo.webp" alt="Logo" class="logo" />
+		</a>
+		<div id="menu-title" class="menu-title">Eirado Bouza Rica</div>
 		<button id="menu-toggle" aria-label="Toggle menu">
 			<Icon name="mdi:menu" width="24" height="24" />
 		</button>
 	</div>
+	<nav id="main-nav">
+		<ul>
+			<li><a href="/">Inicio</a></li>
+			<li><a href="/permacultura">Permacultura</a></li>
+			<li><a href="/talleres">Talleres</a></li>
+			<li class="contact-link"><a href="/contacto">Contacto</a></li>
+		</ul>
+	</nav>
 </header>
 
 <script>
 	const menuToggle = document.getElementById('menu-toggle');
 	const mainNav = document.getElementById('main-nav');
+	const menuTitle = document.getElementById('menu-title');
 
 	if (menuToggle && mainNav) {
 		menuToggle.addEventListener('click', () => {
 			mainNav.classList.toggle('show');
+			menuTitle.classList.toggle('hidden'); // Cambia la visibilidad del título
 		});
 	}
 </script>
@@ -42,34 +50,61 @@ import { Icon } from 'astro-icon';
 		max-width: 1200px;
 		margin: 0 auto;
 	}
+	.logo {
+		width: 50px;
+		height: 50px;
+	}
+
 	#menu-toggle {
 		display: none;
 		background: none;
 		border: none;
 		color: var(--color-text-light);
 		cursor: pointer;
+		font-size: 24px; /* Aumenta el tamaño del icono */
 	}
+
+	.menu-title {
+		font-family: 'Qwitcher Grypen', sans-serif; /* Aplica la fuente deseada */
+		color: var(--color-text-light); /* Color del texto */
+		font-size: 34px; /* Ajusta el tamaño de la fuente */
+		text-align: center; /* Centra el texto */
+		flex-grow: 1; /* Permite que el título ocupe espacio disponible */
+	}
+
+	nav {
+		text-align: center; /* Centra los elementos del menú */
+	}
+
 	nav ul {
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
 		display: flex;
-		justify-content: flex-start;
-		align-items: center;
+		justify-content: center; /* Centra el menú horizontalmente */
+		flex-wrap: wrap; /* Permite que el menú se ajuste en pantallas pequeñas */
 	}
+	
 	nav li {
-		margin: 0 1rem;
+		margin: 0 1.5rem; /* Mayor margen para un mejor espaciado */
 	}
+	
 	nav a {
 		color: var(--color-text-light);
 		text-decoration: none;
 		font-weight: bold;
+		padding: 0.5rem 1rem; /* Espaciado interno para un área de clic más grande */
+		border-radius: 5px; /* Esquinas redondeadas para botones */
+		transition: background-color 0.3s; /* Transición suave al cambiar el fondo */
 	}
+	
 	nav a:hover {
 		text-decoration: underline;
+		background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente al pasar el ratón */
 	}
+
 	.contact-link {
-		margin-left: auto;
+		margin-left: auto; /* Empuja el contacto al final */
 	}
 
 	@media (max-width: 768px) {
@@ -81,16 +116,26 @@ import { Icon } from 'astro-icon';
 		}
 		nav.show {
 			display: block;
+			background-color: var(--color-primary); /* Fondo del menú desplegable */
+			position: absolute; /* Posición absoluta para superponer el menú */
+			top: 70px; /* Ajusta según la altura de la cabecera */
+			left: 0;
+			width: 100%; /* Ancho completo del menú */
 		}
 		nav ul {
 			flex-direction: column;
-			align-items: flex-start;
+			align-items: center; /* Centra los elementos del menú verticalmente */
+			padding: 1rem; /* Espacio alrededor del menú */
 		}
 		nav li {
-			margin: 0.5rem 0;
+			margin: 0.5rem 0; /* Margen vertical */
 		}
 		.contact-link {
-			margin-left: 0;
+			margin-left: 0; /* Reinicia margen en móvil */
 		}
+	}
+
+	.hidden {
+		display: none; /* Oculta el título cuando se despliega el menú */
 	}
 </style>
