@@ -4,21 +4,49 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 interface Props {
-	title: string;
+  title: string;
+  description?: string; // Si deseas manejar la descripción de forma dinámica
+  image?: string; // URL de la imagen destacada para redes sociales
+  url?: string; // URL de la página actual
 }
 
-const { title } = Astro.props;
+const { title, description = "Blog de Permacultura, Eirado de Bouza Rica", image = "/default-image.jpg", url = Astro.url } = Astro.props;
+const currentUrl = new URL(Astro.request.url);
 ---
-
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Blog de Permacultura" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/faviconEirado.webp" />
-		<meta name="generator" content={Astro.generator} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<!-- Canonical -->
+		<link rel="canonical" href={url} />
+
+		<!-- Open Graph meta tags -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		<meta property="og:url" content={url} />
+		<meta property="og:site_name" content="Eirado de Bouza Rica" />
+
+		<!-- Twitter Card meta tags (aunque no uses Twitter, es útil para otras plataformas) -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={image} />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/webp" href="/faviconEirado.webp" />
+
+		<!-- SEO General -->
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="Eirado de Bouza Rica" />
+
+		<!-- Generator tag -->
+		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
 		<Header />

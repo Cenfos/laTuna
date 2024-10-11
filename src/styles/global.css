@@ -9,7 +9,11 @@
 	--shadow-light: rgba(0, 0, 0, 0.1);
 	--shadow-dark: rgba(0, 0, 0, 0.2);
 }
-
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
 /* Estilos Globales */
 html {
 	font-family: system-ui, sans-serif;
@@ -89,48 +93,82 @@ h1, h2, h3, h4, h5, h6 {
 	color: rgb(var(--accent-light));
 }
 
-/* Estilo para el footer */
-footer {
-	width: 100%; /* Asegura que el footer ocupe el ancho completo */
-	padding: 1rem; /* Ajusta el padding según sea necesario */
-	background-color: var(--color-primary);
-	text-align: center; /* Centra el texto */
-	margin-top: 2rem;
-}
-
+/* Estilos básicos del footer */
 .footer-content {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	max-width: 1200px;
-	margin: 0 auto;
-}
-
-.footer-section {
+	gap: 20px;
+	padding: 20px;
+	background-color: #f4f4f4;
+  }
+  
+  .footer-section {
 	flex: 1;
-	margin-bottom: 1rem;
-}
-
-ul {
-	list-style-type: none;
+	min-width: 250px; /* Para que las columnas no colapsen en pantallas pequeñas */
+	max-width: 300px; /* Ajusta este valor según el diseño que desees */
+	margin: 10px;
+  }
+  
+  .footer-section h3 {
+	font-size: 1.2em;
+	margin-bottom: 10px;
+  }
+  
+  .footer-section ul {
+	list-style: none;
 	padding: 0;
-}
-
-li {
-	margin-bottom: 0.5rem;
-}
-
-.copyright {
+  }
+  
+  .footer-section-links li {
+	margin-bottom: 5px;
+  }
+  
+  .footer-section-links a {
+	color: #333;
+	text-decoration: none;
+  }
+  
+  /* Estilo para el mapa */
+  .map {
+	width: 100%; /* Para que ocupe todo el ancho del contenedor */
+	height: 200px; /* Ajusta la altura para hacerla similar a otras secciones */
+	border: 0;
+  }
+  
+  .copyright {
 	text-align: center;
-	margin-top: 2rem;
-	padding-top: 1rem;
-	border-top: 1px solid var(--color-text-light);
-}
-
+	padding: 20px 0;
+	background-color: var(--color-primary);
+	color: var(--color-text-light);
+  }
+  
+  .copyright-text {
+	margin: 0;
+	font-size: 0.9em;
+  }
+  
+  /* Media Query para pantallas más pequeñas */
+  @media (max-width: 768px) {
+	.footer-content {
+	  flex-direction: column;
+	  align-items: center;
+	}
+  
+	.footer-section {
+	  max-width: 100%; /* Para que las columnas ocupen todo el ancho en móviles */
+	}
+  
+	.map {
+	  height: 250px; /* Aumenta la altura en dispositivos móviles si es necesario */
+	}
+  }
+  
 /* Header */
 header {
 	background-color: var(--color-primary);
-	padding: 1rem;
+	padding: 2rem;
+	
 }
 
 .header-content {
@@ -193,6 +231,11 @@ nav a:hover {
 }
 
 /* Componente PostCard.astro */
+.post-article img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; /* Asegura que la imagen mantenga sus proporciones */
+}
 .post-card {
 	display: flex;
 	background-color: rgba(255, 255, 255, 0.9);
@@ -271,11 +314,12 @@ nav a:hover {
 
 /* Media queries para móviles */
 @media (max-width: 768px) {
-    .post-article {
-        max-width: 800px; /* Ajusta el ancho máximo como necesites */
-        margin: 0 auto; /* Centra el artículo */
-        padding: 1rem; /* Añade espacio interior */
-      }
+    .post-article img {
+        max-width: 100%; /* Hace que la imagen no exceda el ancho de su contenedor */
+        height: auto; /* Asegura que la imagen mantenga sus proporciones */
+        display: block;
+        margin: 0 auto; /* Centra la imagen */
+    }
       
       .post-title {
         font-size: 2rem; /* Ajusta el tamaño del título */
