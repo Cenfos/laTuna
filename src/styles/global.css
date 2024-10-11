@@ -199,6 +199,8 @@ header {
 	font-size: 34px;
 	text-align: center;
 	flex-grow: 1;
+	font-size: 4rem;
+	padding: 0.5rem;
 }
 
 nav {
@@ -368,7 +370,7 @@ nav a:hover {
 		display: block; /* Muestra el menú cuando está activo */
 		background-color: var(--color-primary);
 		position: fixed;
-		top: 70px;
+		top: 40px;
 		left: 0;
 		width: 100%;
 	}
@@ -390,6 +392,13 @@ nav a:hover {
 	.post-image {
 		flex: 0 0 auto; /* Permite que la imagen ocupe el ancho completo */
 		max-width: 100%; /* Asegura que la imagen no exceda el ancho */
+	}
+	.menu-title {
+		font-family: 'Qwitcher Grypen', sans-serif;
+		color: var(--color-text-light);		
+		text-align: center;
+		flex-grow: 1;
+		font-size: 2.5rem;		
 	}
 }
 
