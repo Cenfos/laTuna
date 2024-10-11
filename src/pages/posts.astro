@@ -14,8 +14,6 @@ posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).get
 ---
 
 <Layout title="Posts">
-    
-
     <!-- Verifica si hay posts -->
     {posts.length === 0 ? (
         <p>No hay posts disponibles</p>
@@ -24,7 +22,7 @@ posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).get
 		{posts.map((post) => (
 			<PostCard
 				title={post.data.title}
-				date={post.data.date}
+				date={post.data.date.toISOString()}
 				slug={post.slug}
 				excerpt={post.data.excerpt}
 				image={post.data.image}

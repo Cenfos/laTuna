@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { marked } from 'marked'; // Importamos 'marked' para procesar el Markdown
 
 // Obtener todos los posts
 const posts = await getCollection('posts');
@@ -12,6 +13,9 @@ const post = posts.find((p) => p.slug === slug);
 if (!post) {
   throw new Error('Post no encontrado');
 }
+
+// Procesar el contenido del post Markdown a HTML
+const postContent = marked(post.body);
 ---
 
 <Layout title={post.data.title}>
@@ -20,6 +24,8 @@ if (!post) {
     <p class="post-date"><em>{new Date(post.data.date).toLocaleDateString()}</em></p>
     <p class="post-category">{post.data.category}</p>
     <img class="post-image" src={post.data.image} alt={post.data.title} />
-    <div class="post-content" set:html={post.body}></div>
+    
+    <!-- Renderizar el contenido del post con HTML generado -->
+    <div class="post-content" set:html={postContent}></div>
   </article>
 </Layout>

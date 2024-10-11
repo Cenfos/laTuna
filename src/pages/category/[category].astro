@@ -1,35 +1,36 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
 
-// Obtener todos los posts de la colección 'posts'
-const posts = await getCollection('posts');
-
-// Obtener la categoría actual basándonos en la ruta
 const { category } = Astro.params;
 
-// Filtrar los posts por categoría específica
-const filteredPosts = posts.filter(post => 
-  post.data.category && post.data.category.toLowerCase() === category.toLowerCase()
-);
+// Obtener todos los posts
+const posts = await getCollection('posts');
 
-// Manejo de error si no hay posts en la categoría
-if (filteredPosts.length === 0) {
-  throw new Error('No hay posts en esta categoría');
-}
+// Filtrar los posts por categoría
+const filteredPosts = posts.filter((post) => post.data.category.toLowerCase() === category.toLowerCase());
 ---
 
-<Layout title={`Posts de ${category}`}>
-  <h1>Posts de {category}</h1>
+<Layout title={`Posts en la categoría: ${category}`}>
+  <h1 style ="text-align: center">Posts en la categoría: {category}</h1>
+  <br>
+  
   <section class="category-posts">
-    {filteredPosts.map(post => (
-      <article>
-        <h2>{post.data.title}</h2>
-        <p><em>{new Date(post.data.date).toLocaleDateString()}</em></p>
-        <p>{post.data.category}</p>
-        <img src={post.data.image} alt={post.data.title} />
-        <div set:html={post.body}></div>
-      </article>
+    {filteredPosts.map((post) => (
+      <PostCard
+        title={post.data.title}
+        date={post.data.date.toISOString()}
+        slug={post.slug}
+        excerpt={post.data.excerpt}
+        image={post.data.image}
+        category={post.data.category}
+      />
     ))}
   </section>
+  
+  <div class="view-all-container">
+    <a href="/posts" class="view-all-button">Ver todos los posts</a>
+  </div>
+</Layout>
 </Layout>

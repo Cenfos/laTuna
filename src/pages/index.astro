@@ -25,14 +25,14 @@ const categories = [...new Set(validPosts.map(post => post.frontmatter.category)
   <h1>Bienvenido al Blog de Permacultura</h1>
   <p class="intro">Explora nuestros artículos sobre permacultura, sostenibilidad y vida en armonía con la naturaleza.</p>
   
-  <nav class="categories">
+  <section class="categorias">
     <h2>Categorías:</h2>
     <ul>
       {categories.map(category => (
         <li><a href={`/category/${category.toLowerCase()}`}>{category}</a></li>
       ))}
     </ul>
-  </nav>
+  </section>
   
   <section class="recent-posts">
     {recentPosts.map(post => (
