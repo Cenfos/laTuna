@@ -10,7 +10,7 @@ interface Props {
   url?: string; // URL de la página actual
 }
 
-const { title, description = "Blog de Permacultura, Eirado de Bouza Rica", image = "/default-image.jpg", url = Astro.url } = Astro.props;
+const { title, description = "Tuna de Derecho de Santiago de Compostela", image = "/images/001-tuna-derecho-santiago-compostela.jpg", url = Astro.url } = Astro.props;
 const currentUrl = new URL(Astro.request.url);
 ---
 <!doctype html>
@@ -30,7 +30,7 @@ const currentUrl = new URL(Astro.request.url);
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={image} />
 		<meta property="og:url" content={url} />
-		<meta property="og:site_name" content="Eirado de Bouza Rica" />
+		<meta property="og:site_name" content="Tuna de Derecho de Santiago de Compostela" />
 
 		<!-- Twitter Card meta tags (aunque no uses Twitter, es útil para otras plataformas) -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -47,7 +47,6 @@ const currentUrl = new URL(Astro.request.url);
 
 		<!-- Generator tag -->
 		<meta name="generator" content={Astro.generator} />
-		<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/e8717fe8901b6bebbb8f50810f880db3.js"></script>
 		
 	</head>
 	<body>

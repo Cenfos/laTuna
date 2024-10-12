@@ -1,13 +1,13 @@
 /* Variables de Color */
 :root {
-	--color-background: #D6EFD8;
-	--color-text: #1A5319;
-	--color-primary: #508D4E;
-	--color-secondary: #80AF81;
-	--color-accent: #1A5319;
-	--color-text-light: #D6EFD8;
-	--shadow-light: rgba(0, 0, 0, 0.1);
-	--shadow-dark: rgba(0, 0, 0, 0.2);
+    --color-background: #943a42;  /* Color de fondo */
+    --color-text: #D6EFD8;        /* Color de texto */
+    --color-primary: #ac7b21;     /* Color primario */
+    --color-secondary: #D9AC59;   /* Color secundario */
+    --color-accent: #ece5e3;      /* Color de acento */
+    --color-text-light: #D6EFD8;  /* Color de texto claro */
+    --shadow-light: rgba(0, 0, 0, 0.1); /* Sombra clara */
+    --shadow-dark: rgba(0, 0, 0, 0.2);  /* Sombra oscura */
 }
 * {
 	margin: 0;
@@ -279,23 +279,23 @@ nav a:hover {
 }
 
 .post-card h2 a {
-	color: var(--color-accent);
+	color: var(--color-primary);
 	text-decoration: none;
 	transition: color 0.3s ease;
 }
 
 .post-card h2 a:hover {
-	color: var(--color-primary);
+	color: var(--color-secondary);
 }
 
 .post-card .date, .post-card .category {
-	color: var(--color-secondary);
+	color: #211518;
 	font-size: 0.9rem;
 	margin-bottom: 0.5rem;
 }
 
 .post-card .excerpt {
-	color: var(--color-accent);
+	color: var(--color-primary);
 	margin-bottom: 1rem;
 	flex-grow: 1;
 }
@@ -311,7 +311,7 @@ nav a:hover {
 }
 
 .read-more:hover {
-	background-color: var(--color-accent);
+	background-color: var(--color-background);
 }
 
 /* Media queries para móviles */
@@ -454,7 +454,7 @@ nav a:hover {
 /* Estilo de los enlaces */
 .categorias li a {
     text-decoration: none; /* Sin subrayado */
-    color: #1A5319; /* Color del enlace */
+    color: #85212d; /* Color del enlace */
     font-weight: 500; /* Peso de la fuente */
     transition: color 0.3s; /* Transición suave para el color */
     display: block; /* Hacer que el enlace ocupe todo el espacio del li */
@@ -465,7 +465,7 @@ nav a:hover {
 
 /* Cambiar el color al pasar el mouse sobre los enlaces */
 .categorias li a:hover {
-    color: #1A5319; /* Color al pasar el mouse */
-    border-color: #378927; /* Borde al pasar el mouse */
-	background-color: #8edc7cc8; /* Fondo al pasar el mouse */
+    color: #531c19d2; /* Color al pasar el mouse */
+    border-color: #892e27; /* Borde al pasar el mouse */
+	background-color: #dc8c7cc8; /* Fondo al pasar el mouse */
 }

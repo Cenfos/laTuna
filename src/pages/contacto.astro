@@ -3,74 +3,73 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Contacto">
-  <h1 class="title">Formulario de contacto</h1>
-  <p class="subtitle">¿Tienes preguntas sobre permacultura o nuestros talleres? ¡Contáctanos!</p>
-  
-  <form
-    name="contact"
-    method="POST"
-    data-netlify-recaptcha="true"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-  >
-    <!-- Campo oculto para bots -->
-    <input type="hidden" name="form-name" value="contact" />
-    <input type="hidden" name="bot-field" />
-
-    <p>
-      <label>
-        Nombre (obligatorio): <input type="text" name="name" required />
-      </label>
-    </p>
-
-    <p>
-      <label>
-        Correo Electrónico (obligatorio): <input type="email" name="email" required />
-      </label>
-    </p>
-
-    <p>
-      <label>
-        Teléfono: <input type="tel" name="phone" />
-      </label>
-    </p>
-
-    <p>
-      <label>
-        Asunto: <input type="text" name="subject" />
-      </label>
-    </p>
-
-    <p>
-      <label>
-        Mensaje: <textarea name="message"></textarea>
-      </label>
-    </p>
-
-    <!-- Casilla para aceptar la Política de Privacidad -->
-    <p class="checkbox-container">
-      
-      <label for="privacy-policy">
-        Acepto la <a href="./../politica-privacidad" target="_blank">Política de Privacidad</a>
-        <input type="checkbox" id="privacy-policy" name="privacy-policy" required />
-      </label>
-      
-    </p>
-
-    <div data-netlify-recaptcha="true"></div>
+  <h1 class="title">Contacto</h1>
+  <p class="subtitle">¿Tienes preguntas sobre la Tuna o nuestros Servicios? Completa nuestro formulario y te responderemos lo antes posible.</p>
+  <div class="contact-container">
+    <section class="contact-info">
+      <h2>Otras formas de contactarnos</h2>
+      <ul class="contact-links">
+        <li><a href="mailto:contratacion@tunaderechosantiago.com" target="_blank" rel="noopener noreferrer">contratacion@tunaderechosantiago.com</a></li>
+        <li><a href="https://wa.me/34661700823" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        <li>Llámanos al <a href="tel:+34661700823">+34 661 700 823</a></li>
+      </ul>
+      <img src="/images/tuna_en_colombia.jpg" alt="Descripción de la imagen" class="contact-image" />
+    </section>
     
-    <p>
-      <button type="submit">Enviar</button>
-    </p>
-  </form>
-  <section class="title">
-    <h2>Otras formas de contactarnos</h2>
-    <ul>
-      <li><a href="https://www.instagram.com/eirado_bouza_rica_permacultura/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-      <li><a href="mailto:bouzarica@gmail.com" target="_blank" rel="noopener noreferrer">bouzarica@gmail.com</a></li>
-      <li><a href="https://wa.me/34685872868" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-    </ul>
-  </section>
+    <form          
+      name="contact"
+      method="POST"
+      data-netlify-recaptcha="true"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="bot-field" />
+
+      <p>
+        <label>
+          Nombre (obligatorio): <input type="text" name="name" required />
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Correo Electrónico (obligatorio): <input type="email" name="email" required />
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Teléfono: <input type="tel" name="phone" />
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Asunto: <input type="text" name="subject" />
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Mensaje: <textarea name="message"></textarea>
+        </label>
+      </p>
+
+      <p class="checkbox-container">
+        <label for="privacy-policy">
+          Acepto la <a href="./../politica-privacidad" target="_blank">Política de Privacidad</a>
+          <input type="checkbox" id="privacy-policy" name="privacy-policy" required />
+        </label>
+      </p>
+
+      <div data-netlify-recaptcha="true"></div>
+
+      <p>
+        <button type="submit">Enviar</button>
+      </p>
+    </form>
+  </div>
 </Layout>
 
 <style>
@@ -83,65 +82,111 @@ import Layout from "../layouts/Layout.astro";
     text-align: center;
     margin-bottom: 2rem;
   }
+
+  .contact-container {
+    display: flex; /* Utiliza Flexbox para dividir en columnas */
+    justify-content: space-between; /* Espacio entre columnas */
+    align-items: flex-start; /* Alineación superior */
+    margin: 0 auto;
+    max-width: 1200px; /* Máxima anchura del contenedor */
+    gap: 20px; /* Espacio entre columnas */
+  }
+
   form {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: center; /* Centra el contenido del formulario */
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center; /* Centra el contenido del formulario */
+    margin-top: 3rem;
+  }
+
+  label {
+    margin-top: 1rem;
+  }
+
+  input,
+  textarea {
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #ce8940;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  button:hover {
+    background-color: #3a19147d;
+  }
+
+  a {
+    color: #073710;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Alineación y estilo del checkbox y texto */
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido dentro del formulario */
+    margin-top: 1rem;
+  }
+
+  .checkbox-container input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.5); /* Aumenta el tamaño del checkbox */
+  }
+
+  ul {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 0; /* Elimina el padding por defecto */
+    margin: 0; /* Elimina el margen por defecto */
+  }
+
+  .contact-info {
+    max-width: 400px; /* Anchura máxima para la sección de contacto */
+  }
+  .contact-info a {
+    color: white; /* Cambia el color de los enlaces a blanco */
+    text-decoration: underline; /* Asegura que los enlaces sean subrayados */
+  }
+
+  .contact-image {
+    margin-top: 1rem; /* Espacio superior para la imagen */
+    width: 100%; /* Ancho completo para la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+
+
+  @media (min-width: 768px) {
+    .contact-container {
+      flex-direction: row; /* Cambia a columnas en pantallas más grandes */
+      justify-content: space-between; /* Espacio entre columnas */
+    }
+  }
+  @media (max-width: 1024px) {
+  .contact-container {
+    flex-direction: column; /* Mantiene el diseño en una sola columna para tabletas */
+  }
 }
 
-label {
-  margin-top: 1rem;
-}
-
-input,
-textarea {
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  margin-top: 1.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-a {
-  color: #073710;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Alineación y estilo del checkbox y texto */
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centra el contenido dentro del formulario */
-  margin-top: 1rem;
-}
-
-.checkbox-container input[type="checkbox"] {
-  margin-right: 0.5rem;
-  transform: scale(1.5); /* Aumenta el tamaño del checkbox */
-}
-ul {
-  list-style-type: none; /* Elimina los puntos de la lista */
-  padding: 0; /* Elimina el padding por defecto */
-  margin: 0; /* Elimina el margen por defecto */
+@media (min-width: 1025px) {
+  .contact-container {
+    flex-direction: row; /* Cambia a columnas en pantallas más grandes */
+    justify-content: space-between; /* Espacio entre columnas */
+  }
 }
 
 </style>
