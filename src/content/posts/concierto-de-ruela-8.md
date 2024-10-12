@@ -2,7 +2,7 @@
 title: Concierto de Ruela 8
 slug: concierto-ruela-8
 date: 2024-10-12T17:32:22.753Z
-category: Sostenibilidad
+category: Conciertos
 image: /images/001-tuna-derecho-santiago-compostela.jpg
 excerpt: Tuna Compostelana en el Obradoiro
 ---
