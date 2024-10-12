@@ -2,7 +2,7 @@
 title: Historia de nuestra tuna.
 slug: historia-de-nuestra-tuna
 date: 2024-10-12T17:36:39.927Z
-category: Sostenibilidad
+category: Viajes
 image: /images/002-tuna-derecho-santiago-compostela.jpg
 excerpt: Tuna en el parque.
 ---
