@@ -3,15 +3,18 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Contacto">
-  <h1 class="title">Contacto</h1>
-  <p class="subtitle">¿Tienes preguntas sobre la Tuna o nuestros Servicios? Completa nuestro formulario y te responderemos lo antes posible.</p>
+  <h1 class="title">Necesitas a la tuna? ¡No dudes en contactarnos!</h1>
+  <h2 class="title">Únete a la Tuna, No hace falta saber cantar o tocar pues nosotros te enseñamos; lo importante son las ganas. Te esperamos!</h2>
   <div class="contact-container">
     <section class="contact-info">
-      <h2>Otras formas de contactarnos</h2>
-      <ul class="contact-links">
-        <li><a href="mailto:contratacion@tunaderechosantiago.com" target="_blank" rel="noopener noreferrer">contratacion@tunaderechosantiago.com</a></li>
-        <li><a href="https://wa.me/34661700823" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-        <li>Llámanos al <a href="tel:+34661700823">+34 661 700 823</a></li>
+      <h2 class="title">Otras formas de contactarnos</h2>
+      <ul class="footer-section-links-social">
+        <li><a href="mailto:contratacion@tunaderechosantiago.com" target="_blank" rel="noopener noreferrer">
+          <img src ="/assets/images/correo.png" alt="Email" width="44" height="44" /></a></li>
+        <li><a href="https://wa.me/34661700823" target="_blank" rel="noopener noreferrer">
+          <img src ="/assets/images/whatsapp.png" alt="WhatsApp" width="44" height="44" /></a></li>
+        <li><a href="tel:+34661700823">
+          <img src ="/assets/images/telefono.png" alt="Llamada" width="44" height="44" /></a></li>
       </ul>
       <img src="/images/tuna_en_colombia.jpg" alt="Descripción de la imagen" class="contact-image" />
     </section>
@@ -69,6 +72,7 @@ import Layout from "../layouts/Layout.astro";
         <button type="submit">Enviar</button>
       </p>
     </form>
+    
   </div>
 </Layout>
 
@@ -76,6 +80,7 @@ import Layout from "../layouts/Layout.astro";
   .title {
     text-align: center;
     margin-top: 2rem;
+    color:aliceblue;
   }
 
   .subtitle {

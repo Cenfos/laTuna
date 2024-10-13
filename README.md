@@ -52,3 +52,6 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Inocos: <a href="https://www.freepik.es/search">Icono de Mihimihi</a>
+<a href="https://www.freepik.es/search">Icono de moniruldislam</a>
+<a href="https://www.freepik.es/search">Icono de Fathema Khanom</a>

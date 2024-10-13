@@ -1,8 +1,68 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+import Card from '../components/Card.astro';
+
+const servicios = [
+  {   
+    title: "CONCIERTOS",
+    body: "Hemos participado en multitud de certámenes, festivales... casi siempre nos hemos traído algún premio para casa."
+  },
+  { 
+    title: "BODAS",
+    body: "Puedes contratar a la Tuna para ese día especial, o para la noche antes, como tú prefieras."
+  },
+  {    
+    title: "DESPEDIDAS",
+    body: "Nos prestamos a intentar convencer a la novia a no dar ese paso, o al menos a pasar una última gran noche."
+  },
+  {    
+    title: "RONDAS",
+    body: "A quién no le gusta que le sorprendan con una bonita serenata. La Tuna puede actuar en Santiago o dónde tú decidas."
+  },
+  {    
+    title: "VIAJES",
+    body: "Hemos dejado un trocito de nuestro corazón en muchos sitios, como Lituania, Puerto Rico, México, Alemania, y más."
+  },
+  {    
+    title: "DISCOS",
+    body: "Hemos grabado dos CDs y un DVD, y estamos en pleno proceso de grabación de nuevo material."
+  },
+  {    
+    title: "Concierto en Plaza del Obradoiro",
+    body: "Todas las noches sin lluvia, la Tuna ofrece un concierto gratuito en la Plaza del Obradoiro."
+  },
+  {    
+    title: "FIESTAS",
+    body: "Nuestra Tuna puede ser contratada para todo tipo de eventos. ¡Llámame y llegaremos a un acuerdo!"
+  }
+];
 ---
 
-<Layout title="Servicios">
-    <h1>Servicios</h1>
-    <p>Descubre nuestros servicios.</p>
+<Layout title="Servicios de la Tuna">
+  <h1>Servicios de la Tuna, pide presupuesto sin compromiso!</h1>
+  <section class="services-section">
+    <div class="services-grid">
+      {servicios.map((servicio) => (
+        <Card
+          title={servicio.title}
+          body={servicio.body}
+          href={`/contacto`}         
+        />
+      ))}
+      
+  </section>
 </Layout>
+<style>
+  .services-section {
+    padding: 2rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+   
+  }
+
+</style>
