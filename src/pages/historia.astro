@@ -5,55 +5,129 @@ const pageTitle = "Historia de nuestra Tuna";
 ---
 
 <Layout title={pageTitle}>
-	<main>
+
         <h1 class="title">{pageTitle}</h1><br>
-    <section class="historia">
-		<h3>Según la historiografía local, los orígenes de la Tuna de Derecho de Santiago de Compostela se sitúan, sin duda alguna, entre el Mesozoico y la segunda mitad del siglo XX, producto de la inhalación excesiva de "gas ribeiro" por una docena y media de jóvenes estudiantes cuya principal pasión era causar infartos entre el personal docente y tañer extrañas y originales cítaras importadas del lejano Cipango.
+    <section>
+		<h3 class="title">Según la historiografía local, los orígenes de la Tuna de Derecho de Santiago de Compostela se sitúan, sin duda alguna, entre el Mesozoico y la segunda mitad del siglo XX, producto de la inhalación excesiva de "gas ribeiro" por una docena y media de jóvenes estudiantes cuya principal pasión era causar infartos entre el personal docente y tañer extrañas y originales cítaras importadas del lejano Cipango.
         </h3>
         
         <img class="historia-img" src="/images/002-tuna-derecho-santiago-compostela.jpg" alt="Tuna en el parque.">
         
-        <h3>
+        <h3 class="title">
     Muy pronto adquiere renombrada fama por sus cualidades musicales, su vida pícara, alegre y desenfadada y cómo no, por su particular receta de lamprea con grelos. Son memorables sus correrías y andanzas, logrando múltiples honores, miles de halagos femeninos y enmoquetar de rojo pasión el local de ensayo.
 
-</h3>
+</h3 >
         <img class="historia-img" src="/images/003-tuna-derecho-santiago-compostela.jpg" alt="Tuna en el parque.">
 
     </section>
-	</main>
+	
 </Layout>
 <style is:global>
 
-h3 {
-    color: var(--color-background);
-    text-shadow: 1px 1px 2px var(--shadow-dark);
-}
-
-.historia {
-    padding: 20px;
-    background-color: var(--color-accent);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px var(--shadow-light);
-    margin: 0 auto;
-}
-
-.historia-img {
-    width: 100%;
-    height: auto;
-    border: 2px solid var(--color-accent);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px var(--shadow-dark);
-    margin: 20px 0;
-}
-
-@media (min-width: 768px) {
-    .historia {
-        padding: 20px;
+    h3 {
+        color: var(--color-background);
+        font-weight: bold;
+        text-transform: uppercase;        
+        margin-bottom: 20px;
     }
-}
-@media (min-width: 1024px) {
+    
     .historia {
-        padding: 60px;
+        padding: 30px;
+        background-color: var(--color-accent);
+        border: 4px solid var(--color-primary);
+        box-shadow: 10px 10px 0 var(--color-secondary);
+        margin: 20px auto;
+        max-width: 90%;
+        border-radius: 0; /* Eliminar bordes redondeados */
+        position: relative;
+        z-index: 1;
     }
-}
-</style>
+    
+    .historia:before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border: 4px solid var(--color-background);
+        z-index: -1;
+    }
+    
+    .historia-img {
+        width: 100%;
+        height: auto;
+        border: 6px solid var(--color-primary);
+        box-shadow: 10px 10px 0 var(--shadow-dark);
+        margin: 20px 0;
+        border-radius: 0; /* Eliminar bordes redondeados */
+    }
+    
+    @media (min-width: 768px) {
+        .historia {
+            padding: 40px;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .historia {
+            padding: 60px;
+            max-width: 70%;
+        }
+    }
+    
+    /* Neobrutalism - Estilo global */
+    body {
+        background-color: var(--color-background);
+        font-family: 'Arial', sans-serif;
+        color: var(--color-text);
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+    }
+    
+    p, li {
+        font-weight: 500;
+        color: var(--color-text-light);
+        margin-bottom: 10px;
+    }
+    
+    a {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: bold;
+        border: 2px solid var(--color-primary);
+        padding: 5px;
+        box-shadow: 5px 5px 0 var(--color-secondary);
+        transition: background-color 0.2s ease;
+    }
+    
+    a:hover {
+        background-color: var(--color-accent);
+        color: var(--color-background);
+    }
+    
+    button {
+        background-color: var(--color-primary);
+        color: var(--color-background);
+        border: 3px solid var(--color-secondary);
+        padding: 10px 20px;
+        font-weight: bold;
+        box-shadow: 5px 5px 0 var(--color-background);
+        cursor: pointer;
+        transition: transform 0.1s ease;
+    }
+    
+    button:hover {
+        transform: translate(-3px, -3px);
+    }
+    
+    /* Eliminar las sombras suaves y aplicar bordes gruesos */
+    * {
+        box-shadow: none;
+        border-radius: 0;
+    }
+    
+    </style>
+    

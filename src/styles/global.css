@@ -1,13 +1,13 @@
 /* Variables de Color */
 :root {
-    --color-background: #943a42;  /* Color de fondo */
-    --color-text: #D6EFD8;        /* Color de texto */
-    --color-primary: #ac7b21;     /* Color primario */
-    --color-secondary: #D9AC59;   /* Color secundario */
-    --color-accent: #ece5e3;      /* Color de acento */
-    --color-text-light: #D6EFD8;  /* Color de texto claro */
-    --shadow-light: rgba(0, 0, 0, 0.1); /* Sombra clara */
-    --shadow-dark: rgba(0, 0, 0, 0.2);  /* Sombra oscura */
+    --color-background: #ffffff;  /* Fondo blanco */
+    --color-text: #000000;        /* Texto negro */
+    --color-primary: #000000;     /* Color primario (Negro) */
+    --color-secondary: #1b1a19;   /* Color secundario (ligeramente gris oscuro) */
+    --color-accent: #ff0000;      /* Rojo fuerte para el acento */
+    --color-text-light: #ffffff;  /* Texto claro (Blanco) */
+    --shadow-light: rgba(0, 0, 0, 0.05); /* Sombra ligera */
+    --shadow-dark: rgba(0, 0, 0, 0.15);  /* Sombra oscura */
 }
 
 * {
@@ -49,7 +49,7 @@ p {
 h1, h2, h3, h4, h5, h6 {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: var(--color-accent);
+    color: var(--color-primary);
 }
 .title-footer {
 	margin-top: 2rem;
@@ -69,7 +69,7 @@ a {
 .title {
     text-align: center;
     margin-top: 2rem;
-    color:aliceblue;
+    color: var(--color-primary);
   }
 a:hover {
 	color: var(--color-secondary);
@@ -91,7 +91,7 @@ a:hover {
 	line-height: 1.4;
 	padding: calc(1.5rem - 1px);
 	border-radius: 8px;
-	color: white;
+	color: var(--color-text-light);
 	opacity: 0.8;
 	transition: opacity 0.3s ease; /* Transición para la opacidad */
 }
@@ -129,6 +129,7 @@ a:hover {
   .footer-section h3 {
 	font-size: 1.2em;
 	margin-bottom: 10px;
+	color: var(--color-primary);
   }
   
   .footer-section ul {
@@ -247,6 +248,7 @@ header {
 nav {
 	text-align: center;
 	font-size: large;
+	
 }
 
 nav ul {
@@ -263,7 +265,7 @@ nav li {
 }
 
 nav a {
-	color: var(--color-text);
+	color: var(--color-text-light);
 	font-weight: bold;
 	padding: 0.5rem 1rem;
 	border-radius: 5px;
@@ -271,7 +273,7 @@ nav a {
 }
 
 nav a:hover {
-	background-color: rgba(140, 188, 133, 0.352);
+	background-color: rgb(250, 5, 5);
 }
 
 /* Componente PostCard.astro */
