@@ -94,55 +94,56 @@ const getThumbnail = (url) => {
 		<a href="/videos" class="button" >Inicio</a>
 	</div>
 </Layout>
-
 <style is:global>
+
 	.intro {
 		text-align: center;
 		margin-bottom: 2rem;
 	}
+
 	.video-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		gap: 1.5rem;
 	}
+
 	.video-card {
-		background-color: #f9f9f9;
-		border: 1px solid #ddd;
-		border-radius: 8px;
+		background-color: #fff; /* Fondo blanco limpio */
+		border: none; /* Asegúrate de que no haya borde */
+		border-radius: 4px;
 		overflow: hidden;
-		transition: transform 0.2s ease;
-		text-align: center;
+		transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transición para sombra */
+		text-align: justify;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
 	}
+
 	.video-card:hover {
 		transform: scale(1.05);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumentar sombra al hacer hover */
 	}
+
 	.video-card a {
 		text-decoration: none;
 		color: inherit;
+		border: none; /* Asegúrate de que no haya borde */
+		display: block;
 	}
+
 	.video-thumbnail {
 		width: 100%;
 		height: auto;
-		border-bottom: 1px solid #ddd;
+		border: none; /* Asegúrate de que no haya borde */
 	}
+
 	.video-card h3 {
 		padding: 0.5rem;
-		font-size: 1.1rem;
-		color:brown;
+		font-size: 1.2rem; /* Tamaño de fuente */
+		color: rgb(10, 10, 10); /* Color del texto */
+		margin: 0; /* Eliminar margen para un mejor ajuste */
 	}
+
 	.view-all-container {
 		text-align: center;
 		margin-top: 2rem;
-	}
-	.view-all-button {
-		padding: 0.75rem 1.5rem;
-		background-color: #007acc;
-		color: white;
-		border-radius: 4px;
-		text-decoration: none;
-		transition: background-color 0.2s ease;
-	}
-	.view-all-button:hover {
-		background-color: #005a99;
 	}
 </style>

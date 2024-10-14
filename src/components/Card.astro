@@ -19,3 +19,76 @@ const { href, title, body } = Astro.props;
 		</p>
 	</a>
 </li>
+
+<style is:global>
+
+/* Estilos neobrutalistas para las link-card */
+.link-card {
+	list-style: none;
+	margin: 1rem 0;
+	padding: 1.5rem;
+	background-color: #fff; /* Fondo blanco */
+	border: 4px solid #000; /* Borde grueso negro */
+	border-radius: 8px;
+	box-shadow: 8px 8px 0 #000; /* Sombra negra fuerte */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	position: relative;
+}
+
+.link-card:hover {
+	transform: translate(-4px, -4px); /* Efecto de levantamiento */
+	box-shadow: 12px 12px 0 #ff0000; /* Sombra roja en hover */
+}
+
+.link-card a {
+	text-decoration: none;
+	color: #000; /* Texto en negro */
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.link-card h2 {
+	font-size: 2rem;
+	color: #000; /* Negro sólido para el título */
+	font-weight: bold;
+	margin-bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.link-card h2 span {
+	font-size: 2.5rem;
+	color: #ff0000; /* Flecha en rojo */
+	transition: transform 0.3s ease;
+}
+
+.link-card:hover h2 span {
+	transform: translateX(10px); /* Desplaza la flecha al hover */
+}
+
+.link-card p {
+	font-size: 1.25rem;
+	color: #000; /* Texto en negro */
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.link-card:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 0, 0, 0.1); /* Fondo rojo muy suave */
+	z-index: -1; /* Detrás del contenido */
+	transition: background-color 0.3s ease;
+}
+
+.link-card:hover:before {
+	background-color: rgba(255, 0, 0, 0.3); /* Intensifica el fondo rojo en hover */
+}
+
+</style>

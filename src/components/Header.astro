@@ -47,119 +47,136 @@ import { Icon } from "astro-icon";
   }
 </script>
 
-<style is:global>
-  /* Header */
-  header {
-    background-color: var(--color-primary);
+<style  is:global>
+/* Header */
+header {
+    background-image: url("./public/images/slide.jpg");
+    background-size: cover;
+    background-position: center;
     padding: 2rem;
-  }
+    position: relative; /* Para que el menú se posicione sobre la imagen */
+}
 
-  .header-content {
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-  }
+    position: relative; /* Aseguramos que el contenido esté sobre la imagen */
+    z-index: 2; /* Poner el contenido por encima de la imagen */
+}
 
-  .logo {
+.logo {
     width: 50px;
     height: 50px;
-  }
+}
 
-  /* Ocultar el botón de menú en pantallas grandes */
-  #menu-toggle {
-    display: none; /* Ocultamos el botón en pantallas grandes */
-    background: var(--color-primary);
-    border: none;
-    color: var(--color-text-light);
-    cursor: pointer;
-    font-size: 24px;
-  }
-
-  .menu-title {
+/* Menú y título por encima de la imagen */
+.menu-title {
     font-family: "Protest Strike", sans-serif;
     color: var(--color-text-light);
     text-align: center;
     flex-grow: 1;
     font-size: 4rem;
     padding: 0.5rem;
-  }
+    z-index: 2; /* Asegura que esté por encima de la imagen */
+}
 
-  nav {
-    display: flex; /* Mostrar el menú como flex en horizontal */
+nav {
+    display: flex;
     justify-content: center;
     font-size: large;
-    flex-direction: row; /* Menú en una sola fila */
-  }
+    flex-direction: row;
+    z-index: 2; /* Para que el menú esté por encima de la imagen */
+}
 
-  nav ul {
+nav ul {
     display: flex;
     list-style-type: none;
     padding: 0;
     margin: 0;
     justify-content: center;
-  }
+}
 
-  nav li {
+nav li {
     margin: 0 1.5rem;
-  }
+}
 
-  nav a {
+nav a {
     color: var(--color-text-light);
     font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 0px;
     transition: background-color 0.3s;
-  }
+}
 
-  nav a:hover {
+nav a:hover {
     background-color: rgb(240, 233, 233);
-	color: black;
-  }
+    color: black;
+}
 
-  
-  /* Ocultar el botón de menú en pantallas grandes */
-  #menu-toggle {
-    display: none; /* Ocultamos el botón en pantallas grandes */
+/* Botón de menú oculto en pantallas grandes */
+#menu-toggle {
+    display: none; 
     background: none;
     border: none;
     color: var(--color-text-light);
     cursor: pointer;
     font-size: 24px;
-  }
-  /* Estilos responsivos para pantallas pequeñas (móvil y tablet) */
-  @media (max-width: 768px) {
-	.menu-title {
+}
+
+/* Estilos responsivos para móviles y tablets */
+@media (max-width: 768px) {
+    header {
+        background-color: rgb(0, 0, 0); /* Cambiamos el fondo a color sólido */
+        padding: 2rem;
+        background-image: none; /* Ocultamos la imagen de fondo */
+    }
+
+    .menu-title {
         font-size: 2rem; /* Reducir el tamaño de la fuente en móviles */
     }
-    /* Mostrar el botón de menú toggle en móviles y tabletas */
+
+    /* Mostrar el botón de menú en móviles y tablets */
     #menu-toggle {
-      display: block; /* Mostrar el botón en pantallas pequeñas */
+        display: block; /* Mostrar el botón en pantallas pequeñas */
     }
 
     nav {
-      display: none; /* Esconder el menú por defecto en móviles y tabletas */
+        display: none; /* Esconder el menú inicialmente en móviles y tablets */
     }
 
     nav.show {
-      display: block; /* Mostrar el menú cuando esté activo */
-      background-color: var(--color-primary);
-      position: fixed;
-      top: 40px;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
+        display: block; /* Mostrar el menú cuando esté activo */
+        background-color: var(--color-primary);
+        position: fixed;
+        top: 40px;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
     }
 
     nav ul {
-      flex-direction: column; /* Cambiar a dirección vertical */
-      align-items: center;
-      padding: 1rem;
+        flex-direction: column; /* Cambiar a dirección vertical */
+        align-items: center;
+        padding: 1rem;
     }
 
     nav li {
-      margin: 0.5rem 0; /* Espacio entre los elementos del menú */
+        margin: 0.5rem 0; /* Espacio entre los elementos del menú */
     }
-  }
+}
+
+/* Estilos responsivos para tablets (más grandes que 768px pero menos que 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    header {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .menu-title {
+        font-size: 3rem; /* Ajustamos el tamaño de la fuente en tablets */
+    }
+}
 </style>
