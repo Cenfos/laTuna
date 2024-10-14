@@ -1,41 +1,165 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 ---
+
 <head>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap" >
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap"
+    rel="stylesheet"
+  />
 </head>
 
 <header>
-	<div class="header-content">
-		
-		<div id="menu-title" class="menu-title" >Tuna de Derecho de Santiago de Compostela</div>
-		<button id="menu-toggle" aria-label="Toggle menu">
-			<Icon name="mdi:menu" width="24" height="24" />
-		</button>
-	</div>
-	
-	<nav id="main-nav">
-		<ul>
-			<li><a href="/">Inicio</a></li>
-			<li><a href="/historia">Historia</a></li>
-			<li><a href="/videos">Vídeos</a></li>
-			<li><a href="/servicios">Servicios</a></li>
-			<li class="contact-link"><a href="/contacto">Contacto</a></li>
-		</ul>
-	</nav>
+  <div class="header-content">
+    <div id="menu-title" class="menu-title">
+      <h4 class="protest-strike-regular">
+        Tuna de Derecho de Santiago de Compostela
+      </h4>
+    </div>
+    <button id="menu-toggle" aria-label="Toggle menu">
+      <Icon name="mdi:menu" width="24" height="24" />
+    </button>
+  </div>
+
+  <nav id="main-nav">
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/historia">Historia</a></li>
+      <li><a href="/videos">Vídeos</a></li>
+      <li><a href="/servicios">Servicios</a></li>
+      <li class="contact-link"><a href="/contacto">Contacto</a></li>
+    </ul>
+  </nav>
 </header>
 
 <script>
-	const menuToggle = document.getElementById('menu-toggle');
-	const mainNav = document.getElementById('main-nav');
-	const menuTitle = document.getElementById('menu-title');
+  const menuToggle = document.getElementById("menu-toggle");
+  const mainNav = document.getElementById("main-nav");
+  const menuTitle = document.getElementById("menu-title");
 
-	if (menuToggle && mainNav) {
-		menuToggle.addEventListener('click', () => {
-			mainNav.classList.toggle('show');
-			menuTitle.classList.toggle('hidden'); // Cambia la visibilidad del título
-		});
-	}
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+      mainNav.classList.toggle("show");
+      menuTitle.classList.toggle("hidden"); // Cambia la visibilidad del título
+    });
+  }
 </script>
 
+<style is:global>
+  /* Header */
+  header {
+    background-color: var(--color-primary);
+    padding: 2rem;
+  }
 
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Ocultar el botón de menú en pantallas grandes */
+  #menu-toggle {
+    display: none; /* Ocultamos el botón en pantallas grandes */
+    background: var(--color-primary);
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    font-size: 24px;
+  }
+
+  .menu-title {
+    font-family: "Protest Strike", sans-serif;
+    color: var(--color-text-light);
+    text-align: center;
+    flex-grow: 1;
+    font-size: 4rem;
+    padding: 0.5rem;
+  }
+
+  nav {
+    display: flex; /* Mostrar el menú como flex en horizontal */
+    justify-content: center;
+    font-size: large;
+    flex-direction: row; /* Menú en una sola fila */
+  }
+
+  nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+  }
+
+  nav li {
+    margin: 0 1.5rem;
+  }
+
+  nav a {
+    color: var(--color-text-light);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0px;
+    transition: background-color 0.3s;
+  }
+
+  nav a:hover {
+    background-color: rgb(240, 233, 233);
+	color: black;
+  }
+
+  
+  /* Ocultar el botón de menú en pantallas grandes */
+  #menu-toggle {
+    display: none; /* Ocultamos el botón en pantallas grandes */
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    font-size: 24px;
+  }
+  /* Estilos responsivos para pantallas pequeñas (móvil y tablet) */
+  @media (max-width: 768px) {
+	.menu-title {
+        font-size: 2rem; /* Reducir el tamaño de la fuente en móviles */
+    }
+    /* Mostrar el botón de menú toggle en móviles y tabletas */
+    #menu-toggle {
+      display: block; /* Mostrar el botón en pantallas pequeñas */
+    }
+
+    nav {
+      display: none; /* Esconder el menú por defecto en móviles y tabletas */
+    }
+
+    nav.show {
+      display: block; /* Mostrar el menú cuando esté activo */
+      background-color: var(--color-primary);
+      position: fixed;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav ul {
+      flex-direction: column; /* Cambiar a dirección vertical */
+      align-items: center;
+      padding: 1rem;
+    }
+
+    nav li {
+      margin: 0.5rem 0; /* Espacio entre los elementos del menú */
+    }
+  }
+</style>

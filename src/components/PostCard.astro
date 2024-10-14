@@ -31,4 +31,89 @@ console.log('Slug en PostCard:', slug);
     <a href={`/posts/${slug}`} class="read-more">Ver post</a> <!-- Uso correcto del slug -->
   </div>
 </article>
+<style is:global>
 
+/* Contenido del post */
+.post-content {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+/* Título del post */
+.post-content h2 {
+	font-size: 1.5rem;
+	margin: 0;
+	font-weight: bold;
+}
+
+.post-content h2 a {
+	text-decoration: none;
+	color: var(--color-primary); /* Color primario */
+	border-bottom: 4px 4px 1px 1px solid #000; /* Línea inferior gruesa */
+	padding-bottom: 0.2rem;
+	transition: none;
+  
+}
+
+.post-content h2 a:hover {
+	color: var(--color-background); /* Cambio brusco de color en hover */
+}
+
+/* Estilo de la fecha */
+.date {
+	color: var(--color-text-dark); /* Texto oscuro */
+	font-weight: bold;
+	font-size: 0.9rem;
+	display: inline-block;
+	padding: 0.2rem 0.5rem;
+	border: 2px solid #000;
+	box-shadow: 4px 4px 1px 1px #000;
+}
+
+/* Estilo de la categoría */
+.category {
+	color: var(--color-primary);
+	font-weight: bold;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+}
+
+/* Estilo del excerpt */
+.excerpt {
+	color: #000;
+	font-size: 1rem;
+	line-height: 1.4;
+	margin: 0.5rem 0;
+	border-left: 4px solid #000;
+	padding-left: 1rem;
+}
+
+/* Estilo del botón "Ver post" */
+.read-more {
+	background-color: var(--color-primary);
+	color: var(--color-text-light);
+	border: 4px solid #000;
+	padding: 0.5rem 1rem;
+	box-shadow: 6px 6px 0px #000;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: none;
+}
+
+.read-more:hover {
+	background-color: var(--color-background); /* Fondo amarillo fuerte */
+	color: var(--color-text); /* Texto negro */
+}
+@media (min-width: 768px) {
+  .post-card {
+    flex-direction: column;
+  }
+  .post-image {
+    width: 50%;
+  
+  }
+ 
+}
+
+</style>

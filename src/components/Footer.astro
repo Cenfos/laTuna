@@ -4,7 +4,7 @@ const currentYear = new Date().getFullYear();
 <footer>
 	<div class="footer-content">
 		<div class="footer-section">
-			<h3 class="title-footer">Páginas legales</h3><br>
+			<h3 class="title">Páginas legales</h3><br>
 			<ul class="footer-section-links">
 				<li><a class="footer-link" href="/politica-privacidad">Política de privacidad</a></li>
 				<li><a class="footer-link" href="/politica-cookies">Política de cookies</a></li>
@@ -13,7 +13,7 @@ const currentYear = new Date().getFullYear();
 			
 		</div>
 		<div class="footer-section">
-			<h3 class="title-footer">Contacto</h3>
+			<h3 class="title">Contacto</h3>
 			<ul class="footer-section-links">
 				<li><a class="footer-link" href="tel:+34661700823">Llámanos al teléfono: +34661700823</a></li>
 				<li><a href="mailto:contratacion@tunaderechosantiago.com" target="_blank" rel="noopener noreferrer">contratacion@tunaderechosantiago.com</a></li>
@@ -28,7 +28,7 @@ const currentYear = new Date().getFullYear();
 			</ul>
 		</div>
 		<div class="footer-section-social">
-			<h3 class="title-footer">Redes sociales</h3>
+			<h3 class="title">Redes sociales</h3>
 			<ul class="footer-section-links-social">
 			  <li><a href="https://www.instagram.com/tunaderechosantiago/" target="_blank" rel="noopener noreferrer">
 				<img src="/images/instagram.png" alt="Instagram" width="44" height="44" /></a></li>
@@ -43,7 +43,7 @@ const currentYear = new Date().getFullYear();
 		  
 		  
 		<div class="footer-section">
-			<h3 class="footer-section-title">Localización</h3>	
+			<h3 class="title">Localización</h3>	
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4135.085102612503!2d-8.556808215283946!3d42.873968771156214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2efe6b328d6d7f%3A0x52b55eb675216318!2sTuna%20de%20Derecho%20de%20Santiago%20de%20Compostela!5e0!3m2!1sgl!2ses!4v1728756828902!5m2!1sgl!2ses" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 		</div>
@@ -52,4 +52,104 @@ const currentYear = new Date().getFullYear();
 		<p class="copyright-text">© {currentYear} Tuna de derecho de Santiago de Compostela. Todos los derechos reservados.</p>
 	</div>
 </footer>
+<style is:global>
+	
 
+/* Estilos básicos del footer */
+.footer-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 20px;
+	background-color: #f4f4f4;
+  }
+  
+  .footer-section {
+	flex: 1;
+	min-width: 250px; /* Para que las columnas no colapsen en pantallas pequeñas */
+	max-width: 300px; /* Ajusta este valor según el diseño que desees */
+	margin: 20px;
+  }
+  
+  .footer-section h3 {
+	font-size: 1.2em;
+	margin-bottom: 10px;
+	color: var(--color-primary);
+  }
+  
+  .footer-section ul {
+	list-style: none;
+	padding: 0px;
+  }
+  
+  .footer-section-links li {
+	margin-bottom: 15px;
+  }
+  
+  .footer-section-links a {
+	color: #333;
+	text-decoration: none;
+  }
+  
+  .footer-section-links a:hover {
+	color: var(--color-background);
+
+  }
+  .footer-section-links-social {
+	margin-top: 30px;
+	display: flex;
+  justify-content: center; /* Centra los elementos */
+  gap: 20px; /* Espacio entre los íconos */
+  padding: 0;
+  list-style: none;
+  }
+  
+  .footer-section-links-social ul {
+	display: flex;
+  align-items: center;
+  }
+  .footer-section-links-social a img {
+	transition: transform 0.3s ease; /* Añade un efecto al pasar el cursor */
+  }
+  
+  .footer-section-links-social a img:hover {
+	transform: scale(1.1); /* Aumenta el tamaño al pasar el cursor */
+  }
+  
+  /* Estilo para el mapa */
+  .map {
+	width: 100%; /* Para que ocupe todo el ancho del contenedor */
+	height: 200px; /* Ajusta la altura para hacerla similar a otras secciones */
+	border: 0;
+  }
+  
+  .copyright {
+	text-align: center;
+	padding: 20px 0;
+	background-color: var(--color-primary);
+	color: var(--color-text-light);
+  }
+  
+  .copyright-text {
+	margin: 0;
+	font-size: 0.9em;
+  }
+  
+  /* Media Query para pantallas más pequeñas */
+  @media (max-width: 768px) {
+	.footer-content {
+	  flex-direction: column;
+	  align-items: center;
+	}
+  
+	.footer-section {
+	  max-width: 100%; /* Para que las columnas ocupen todo el ancho en móviles */
+	}
+  
+	.map {
+	  height: 250px; /* Aumenta la altura en dispositivos móviles si es necesario */
+	}
+  }
+  
+</style>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PostCard from '../components/PostCard.astro';
+import Categorias from '../components/Categorias.astro';
 
 // Usamos Astro.glob para obtener los posts de la carpeta src/content/post
 const posts = await Astro.glob('../content/posts/*.md');
@@ -17,22 +18,13 @@ validPosts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.fr
 // Limitar a los 5 posts más recientes
 const recentPosts = validPosts.slice(0, 5);
 
-// Obtener las categorías únicas de los posts
-const categories = [...new Set(validPosts.map(post => post.frontmatter.category))];
+
 ---
 
 <Layout title="Tuna de Derecho de Santiago de Compostela">
   <h1 class="title">Bienvenido!</h1>
   <p class="intro">¡Aquí encontrarás los últimos posts de la Tuna de Derecho Compostelana!</p>
-  
-  <section class="categorias">
-    <h2>Categorías:</h2>
-    <ul>
-      {categories.map(category => (
-        <li><a href={`/category/${category.toLowerCase()}`}>{category}</a></li>
-      ))}
-    </ul>
-  </section>
+  <Categorias />  
   
   <section class="recent-posts">
     {recentPosts.map(post => (
@@ -51,3 +43,46 @@ const categories = [...new Set(validPosts.map(post => post.frontmatter.category)
     <a href="/posts" class="view-all-button">Ver todos los posts</a>
   </div>
 </Layout>
+<style is:global>
+  /* Estilo para la sección de posts recientes */
+.recent-posts {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los posts se ajusten en múltiples filas si es necesario */
+    gap: 20px; /* Espacio entre cada tarjeta */
+    justify-content: space-between; /* Espaciado entre las tarjetas */
+    margin: 2rem 0;
+}
+
+/* Estilo para las tarjetas de posts en disposición horizontal */
+.post-card {
+    display: flex; /* Hacer que el contenido interno se alinee horizontalmente */
+    flex-direction: row; /* Orientación horizontal */
+    max-width: 100%; /* Evitar que las tarjetas sean más grandes que el contenedor */
+    padding: 1rem;
+    border: 4px solid #000; /* Bordes gruesos */
+    box-shadow: 8px 8px 0px #000; /* Sombra dura y desplazada */
+    transition: none; /* Sin transiciones */
+}
+
+/* Imagen del post ajustada a la izquierda */
+.post-image {
+    flex: 0 0 150px; /* Imagen ocupa un espacio fijo de 150px */
+    max-width: 150px; /* Limitar el ancho máximo de la imagen */
+    border: 4px solid #000; /* Borde grueso */
+    box-shadow: 8px 8px 0px #000; /* Sombra dura */
+    margin-right: 20px; /* Espacio entre la imagen y el contenido */
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La imagen se ajusta al contenedor */
+}
+.intro {
+  color: var(--color-text-dark);
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;   
+    padding: 0.5rem 1rem;
+}
+</style>

@@ -9,7 +9,13 @@
     --shadow-light: rgba(0, 0, 0, 0.05); /* Sombra ligera */
     --shadow-dark: rgba(0, 0, 0, 0.15);  /* Sombra oscura */
 }
-
+.protest-strike-regular {
+	font-family: "Protest Strike", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	color: var(--color-text-light)
+  }
+  
 * {
     margin: 0;
     padding: 0;
@@ -25,11 +31,16 @@ html {
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+	background-color: var(--color-background);
+	font-family: 'Arial', sans-serif;
+	color: var(--color-text);
+	font-size: 16px;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 main {
@@ -40,10 +51,40 @@ main {
     margin: 0 auto;
     box-sizing: border-box;
 }
+p, li {
+	font-weight: 500;
+	color: var(--color-text-light);
+	margin-bottom: 10px;
+}
 
-p {
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
+a {
+	color: var(--color-primary);
+	text-decoration: none;
+	font-weight: bold;
+	border: 2px solid var(--color-primary);
+	padding: 5px;
+	box-shadow: 5px 5px 0 var(--color-secondary);
+	transition: background-color 0.2s ease;
+}
+
+a:hover {
+	background-color: var(--color-accent);
+	color: var(--color-background);
+}
+
+button {
+	background-color: var(--color-primary);
+	color: var(--color-background);
+	border: 3px solid var(--color-secondary);
+	padding: 10px 20px;
+	font-weight: bold;
+	box-shadow: 5px 5px 0 var(--color-background);
+	cursor: pointer;
+	transition: transform 0.1s ease;
+}
+
+button:hover {
+	transform: translate(-3px, -3px);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,28 +92,23 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
     color: var(--color-primary);
 }
-.title-footer {
-	margin-top: 2rem;
-	margin-bottom: 1rem;
-	color: var(--color-background);
-}
+
 section {
     margin-bottom: 3rem;
     text-align: justify;
 }
-/* Estilos para los enlaces */
-a {
-	color: var(--color-accent);
-	text-decoration: none;
-	transition: color 0.3s;
-}
+
+/* Títulos */
 .title {
     text-align: center;
     margin-top: 2rem;
     color: var(--color-primary);
-  }
-a:hover {
-	color: var(--color-secondary);
+}
+
+/* Eliminación de sombras */
+* {
+	box-shadow: none;
+	border-radius: 0;
 }
 /* Tarjeta de Enlace */
 .link-card {
@@ -93,11 +129,11 @@ a:hover {
 	border-radius: 8px;
 	color: var(--color-text-light);
 	opacity: 0.8;
-	transition: opacity 0.3s ease; /* Transición para la opacidad */
+	transition: opacity 0.3s ease;
 }
 
 .link-card:hover > a {
-	opacity: 1; /* Aumenta la opacidad al pasar el ratón */
+	opacity: 1;
 }
 
 .link-card:hover {
@@ -105,411 +141,5 @@ a:hover {
 	background-image: var(--accent-gradient);
 }
 
-.link-card:hover h2 {
-	color: rgb(var(--accent-light));
-}
 
-/* Estilos básicos del footer */
-.footer-content {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	gap: 20px;
-	padding: 20px;
-	background-color: #f4f4f4;
-  }
-  
-  .footer-section {
-	flex: 1;
-	min-width: 250px; /* Para que las columnas no colapsen en pantallas pequeñas */
-	max-width: 300px; /* Ajusta este valor según el diseño que desees */
-	margin: 20px;
-  }
-  
-  .footer-section h3 {
-	font-size: 1.2em;
-	margin-bottom: 10px;
-	color: var(--color-primary);
-  }
-  
-  .footer-section ul {
-	list-style: none;
-	padding: 0px;
-  }
-  
-  .footer-section-links li {
-	margin-bottom: 15px;
-  }
-  
-  .footer-section-links a {
-	color: #333;
-	text-decoration: none;
-  }
-  
-  .footer-section-links a:hover {
-	color: var(--color-background);
 
-  }
-  .footer-section-links-social {
-	margin-top: 30px;
-	display: flex;
-  justify-content: center; /* Centra los elementos */
-  gap: 20px; /* Espacio entre los íconos */
-  padding: 0;
-  list-style: none;
-  }
-  
-  .footer-section-links-social ul {
-	display: flex;
-  align-items: center;
-  }
-  .footer-section-links-social a img {
-	transition: transform 0.3s ease; /* Añade un efecto al pasar el cursor */
-  }
-  
-  .footer-section-links-social a img:hover {
-	transform: scale(1.1); /* Aumenta el tamaño al pasar el cursor */
-  }
-  
-  /* Estilo para el mapa */
-  .map {
-	width: 100%; /* Para que ocupe todo el ancho del contenedor */
-	height: 200px; /* Ajusta la altura para hacerla similar a otras secciones */
-	border: 0;
-  }
-  
-  .copyright {
-	text-align: center;
-	padding: 20px 0;
-	background-color: var(--color-primary);
-	color: var(--color-text-light);
-  }
-  
-  .copyright-text {
-	margin: 0;
-	font-size: 0.9em;
-  }
-  
-  /* Media Query para pantallas más pequeñas */
-  @media (max-width: 768px) {
-	.footer-content {
-	  flex-direction: column;
-	  align-items: center;
-	}
-  
-	.footer-section {
-	  max-width: 100%; /* Para que las columnas ocupen todo el ancho en móviles */
-	}
-  
-	.map {
-	  height: 250px; /* Aumenta la altura en dispositivos móviles si es necesario */
-	}
-  }
-  
-/* Header */
-header {
-	background-color: var(--color-primary);
-	padding: 2rem;
-	
-}
-
-.header-content {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	max-width: 1200px;
-	margin: 0 auto;
-}
-
-.logo {
-	width: 50px;
-	height: 50px;
-}
-
-#menu-toggle {
-	display: none;
-	background: none;
-	border: none;
-	color: var(--color-text-light);
-	cursor: pointer;
-	font-size: 24px;
-}
-
-.menu-title {
-	font-family: 'Qwitcher Grypen', sans-serif;
-	color: var(--color-text-light);
-	font-size: 34px;
-	text-align: center;
-	flex-grow: 1;
-	font-size: 4rem;
-	padding: 0.5rem;
-}
-
-nav {
-	text-align: center;
-	font-size: large;
-	
-}
-
-nav ul {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-}
-
-nav li {
-	margin: 0 1.5rem;
-}
-
-nav a {
-	color: var(--color-text-light);
-	font-weight: bold;
-	padding: 0.5rem 1rem;
-	border-radius: 5px;
-	transition: background-color 0.3s;
-}
-
-nav a:hover {
-	background-color: rgb(250, 5, 5);
-}
-
-/* Componente PostCard.astro */
-.post-article img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover; /* Asegura que la imagen mantenga sus proporciones */
-}
-.post-card {
-	display: flex;
-	background-color: rgba(255, 255, 255, 0.9);
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	border-radius: 8px;
-	overflow: hidden;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	margin-bottom: 1.5rem; /* Agrega espacio entre tarjetas */
-}
-
-.post-card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.post-image {
-	flex: 0 0 40%; /* Ancho inicial en pantallas grandes */
-	max-width: 40%;
-}
-
-.post-image img {
-	width: 100%;
-	height: auto; /* Cambiado a auto para mantener la proporción */
-	object-fit: cover;
-}
-
-.post-content {
-	flex: 1;
-	padding: 1.5rem;
-	display: flex;
-	flex-direction: column;
-}
-
-.post-card h2 {
-	margin-top: 0;
-	margin-bottom: 0.5rem;
-	font-size: 1.5rem;
-}
-
-.post-card h2 a {
-	color: var(--color-primary);
-	text-decoration: none;
-	transition: color 0.3s ease;
-}
-
-.post-card h2 a:hover {
-	color: var(--color-secondary);
-}
-
-.post-card .date, .post-card .category {
-	color: #211518;
-	font-size: 0.9rem;
-	margin-bottom: 0.5rem;
-}
-
-.post-card .excerpt {
-	color: var(--color-primary);
-	margin-bottom: 1rem;
-	flex-grow: 1;
-}
-
-.read-more {
-	align-self: flex-start;
-	background-color: var(--color-primary);
-	color: var(--color-text-light);
-	padding: 0.5rem 1rem;
-	border-radius: 4px;
-	text-decoration: none;
-	transition: background-color 0.3s ease;
-}
-
-.read-more:hover {
-	background-color: var(--color-background);
-}
-
-/* Media queries para móviles */
-@media (max-width: 768px) {
-    .post-article img {
-        max-width: 100%; /* Hace que la imagen no exceda el ancho de su contenedor */
-        height: auto; /* Asegura que la imagen mantenga sus proporciones */
-        display: block;
-        margin: 0 auto; /* Centra la imagen */
-    }
-      
-      .post-title {
-        font-size: 2rem; /* Ajusta el tamaño del título */
-      }
-      
-	.post-card {
-		flex-direction: column; /* Cambia a columna en móviles */
-	}
-
-	.post-image {
-		flex: 0 0 auto; /* Permite que la imagen ocupe el ancho completo */
-		max-width: 100%; /* Ancho máximo de la imagen */
-        height: auto;
-	}
-
-	.post-content {
-		padding: 1rem; /* Menos padding en móviles */
-	}
-
-	.post-card h2 {
-		font-size: 1.25rem; /* Ajusta el tamaño del texto en móviles */
-	}
-	
-	.post-card .date, .post-card .category {
-		font-size: 0.8rem; /* Reduce el tamaño del texto en móviles */
-	}
-
-	.footer-content {
-		flex-direction: column; /* Ajusta la dirección de las secciones del footer */
-        width: 100%;
-	}
-
-	.footer-section {
-		margin-bottom: 1.5rem; /* Espacio entre secciones del footer */
-	}
-
-	#menu-toggle {
-		display: block; /* Muestra el botón de menú en móviles */
-	}
-
-	nav {
-		display: none; /* Esconde el menú por defecto */
-	}
-
-	nav.show {
-		display: block; /* Muestra el menú cuando está activo */
-		background-color: var(--color-primary);
-		position: fixed;
-		top: 40px;
-		left: 0;
-		width: 100%;
-	}
-
-	nav ul {
-		flex-direction: column; /* Cambia la dirección de la lista en móviles */
-		align-items: center;
-		padding: 1rem;
-	}
-
-	nav li {
-		margin: 0.5rem 0; /* Espacio entre los elementos del menú */
-	}
-
-	.post-card {
-		flex-direction: column; /* Asegura que las tarjetas se alineen en columna en móviles */
-	}
-
-	.post-image {
-		flex: 0 0 auto; /* Permite que la imagen ocupe el ancho completo */
-		max-width: 100%; /* Asegura que la imagen no exceda el ancho */
-	}
-	.menu-title {
-		font-family: 'Qwitcher Grypen', sans-serif;
-		color: var(--color-text-light);		
-		text-align: center;
-		flex-grow: 1;
-		font-size: 2.5rem;		
-	}
-}
-
-/* Estilos para el componente de categorías */
-.intro {
-	font-size: 1.2rem;
-	color: var(--color-text);
-	margin-bottom: 2rem;
-}
-
-.categories {
-	margin-bottom: 2rem;
-    color: var(--color-text);
-}
-
-.categories h2 {
-	font-size: 1.5rem;
-	color: var(--color-accent);
-    margin-bottom: 1rem;
-}  
-
-/* Estilo para la sección de categorías */
-.categorias {
-    background-color: #f9f9f9; /* Color de fondo claro */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    margin: 20px 0; /* Margen superior e inferior */
-}
-
-/* Estilo del encabezado */
-.categorias h2 {
-    font-size: 24px; /* Tamaño de fuente */
-    color: #333; /* Color del texto */
-    margin-bottom: 15px; /* Margen inferior */
-}
-
-/* Estilo de la lista de categorías */
-.categorias ul {
-    display: flex; /* Activar flexbox */
-    flex-wrap: wrap; /* Permitir que las categorías se envuelvan */
-    list-style-type: none; /* Eliminar viñetas */
-    padding: 0; /* Eliminar padding */
-    margin: 0; /* Eliminar margen */
-}
-
-/* Estilo de cada ítem de la lista */
-.categorias li {
-    flex: 1 0 30%; /* Cada ítem ocupará aproximadamente 30% del contenedor */
-    margin-bottom: 10px; /* Espaciado entre ítems */
-}
-
-/* Estilo de los enlaces */
-.categorias li a {
-    text-decoration: none; /* Sin subrayado */
-    color: #85212d; /* Color del enlace */
-    font-weight: 500; /* Peso de la fuente */
-    transition: color 0.3s; /* Transición suave para el color */
-    display: block; /* Hacer que el enlace ocupe todo el espacio del li */
-    padding: 10px; /* Espaciado interno del enlace */
-    border: 1px solid transparent; /* Borde por defecto */
-    border-radius: 4px; /* Bordes redondeados en los enlaces */
-}
-
-/* Cambiar el color al pasar el mouse sobre los enlaces */
-.categorias li a:hover {
-    color: #531c19d2; /* Color al pasar el mouse */
-    border-color: #892e27; /* Borde al pasar el mouse */
-	background-color: #dc8c7cc8; /* Fondo al pasar el mouse */
-}

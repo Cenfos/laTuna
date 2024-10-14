@@ -1,0 +1,84 @@
+---
+const posts = await Astro.glob('../content/posts/*.md');
+const validPosts = posts.filter((post) => {
+  const { frontmatter } = post;
+  return frontmatter.title && frontmatter.slug && frontmatter.date && frontmatter.category && frontmatter.image && frontmatter.excerpt;
+});
+const categories = [...new Set(validPosts.map(post => post.frontmatter.category))];
+---
+
+<section class="categorias">
+    <h2 class="navbar">Categorías:</h2>
+    <ul>
+      {categories.map(category => (
+        <li><a href={`/category/${category.toLowerCase()}`}>{category}</a></li>
+      ))}
+    </ul>
+  </section>
+  <style is:global>
+    /* Estilo para la sección de categorías */
+.categorias {
+    background-color: #f2f2f2; /* Color de fondo muy claro */
+    padding: 24px;
+    margin: 30px 0;
+    border: 4px solid #000; /* Bordes gruesos y definidos */
+    border-radius: 0px; /* Sin bordes redondeados */
+    box-shadow: 8px 8px 0px #000; /* Sombra dura y desplazada */
+}
+
+/* Estilo del encabezado */
+.categorias h2 {
+    font-size: 28px;
+    color: #000; /* Texto negro */
+    margin-bottom: 20px;
+    font-weight: 700; /* Fuente muy gruesa */
+    text-align: center;
+    text-transform: uppercase; /* Texto en mayúsculas */
+    border-bottom: 4px solid #000; /* Línea inferior gruesa */
+    padding-bottom: 10px;
+}
+
+/* Estilo de la lista de categorías */
+.categorias ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Estilo de cada ítem de la lista */
+.categorias li {
+    flex: 1 1 28%;
+    margin-bottom: 20px;
+    max-width: 280px; /* Ancho máximo más controlado */
+    border: 4px solid #000; /* Bordes gruesos */
+    background-color: #fafafa; /* Fondo gris claro */
+    padding: 20px;
+    box-shadow: 6px 6px 0px #000; /* Sombra dura */
+}
+
+/* Estilo de los enlaces */
+.categorias li a {
+    text-decoration: none;
+    color: #000; /* Texto negro */
+    font-weight: 700;
+    display: block;
+    padding: 16px;
+    border: 4px solid #000; /* Bordes gruesos */
+    background-color: #f7f7f7; /* Fondo gris muy claro */
+    text-align: center;
+    transition: none; /* Sin transiciones */
+    text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+/* Cambiar el color al pasar el mouse sobre los enlaces */
+.categorias li a:hover {
+    background-color: var(--color-accent); /* Color de fondo amarillo audaz al pasar el mouse */
+    color: #000; /* El texto permanece negro */
+    border-color: #000;
+    box-shadow: 6px 6px 0px #000; /* Mantener la sombra dura */
+}
+</style>
