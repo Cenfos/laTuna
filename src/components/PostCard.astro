@@ -15,82 +15,101 @@ const { title, date, slug, excerpt, image, category } = Astro.props;
 console.log('Slug en PostCard:', slug);
 ---
 
-
-
 <article class="post-card">
-  <div class="post-image">
-    <img class="post-article-image" src={image} alt={title} />
-  </div>
-  <div class="post-content">
-    <h2>
-      <a href={`/posts/${slug}`}>{title}</a> <!-- Uso correcto del slug -->
-    </h2>
-    <p class="date">{new Date(date).toLocaleDateString()}</p> <!-- Formateo de fecha -->
-    <p class="category">{category}</p>
-    <p class="excerpt">{excerpt}</p>
-    <a href={`/posts/${slug}`} class="read-more">Ver post</a> <!-- Uso correcto del slug -->
-  </div>
-</article>
-<style is:global>
-
-/* Contenido del post */
-.post-content {
+	<div class="post-image">
+	  <img class="post-article-image" src={image} alt={title} />
+	</div>
+	<div class="post-content">
+	  <h2>
+		<a href={`/posts/${slug}`}>{title}</a>
+	  </h2>
+	  <p class="date">{new Date(date).toLocaleDateString()}</p>
+	  <p class="category">{category}</p>
+	  <p class="excerpt">{excerpt}</p>
+	  <a href={`/posts/${slug}`} class="read-more">Ver post</a>
+	</div>
+  </article>
+  
+  <style is:global>
+  /* Estilos para el post-card */
+  .post-card {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	border: 2px solid #000;
+	box-shadow: 6px 6px 0px #000;
+	overflow: hidden; /* Evitar desbordamientos */
+  }
+  
+  /* Imagen del post */
+  .post-image {
+	width: 100%;
+	overflow: hidden; /* Evitar que el contenido desborde */
+  }
+  
+  .post-article-image {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+  }
+  
+  /* Contenido del post */
+  .post-content {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
-}
-
-/* Título del post */
-.post-content h2 {
+  }
+  
+  /* Título del post */
+  .post-content h2 {
 	font-size: 1.5rem;
 	margin: 0;
 	font-weight: bold;
-}
-
-.post-content h2 a {
-	text-decoration: none;
-	color: var(--color-primary); /* Color primario */
-	border-bottom: 4px 4px 1px 1px solid #000; /* Línea inferior gruesa */
-	padding-bottom: 0.2rem;
-	transition: none;
+  }
   
-}
-
-.post-content h2 a:hover {
-	color: var(--color-background); /* Cambio brusco de color en hover */
-}
-
-/* Estilo de la fecha */
-.date {
-	color: var(--color-text-dark); /* Texto oscuro */
+  .post-content h2 a {
+	text-decoration: none;
+	color: var(--color-primary);
+	border-bottom: 4px solid #000;
+	padding-bottom: 0.2rem;
+  }
+  
+  .post-content h2 a:hover {
+	color: var(--color-background);
+  }
+  
+  /* Estilo de la fecha */
+  .date {
+	color: var(--color-text-dark);
 	font-weight: bold;
 	font-size: 0.9rem;
 	display: inline-block;
 	padding: 0.2rem 0.5rem;
 	border: 2px solid #000;
 	box-shadow: 4px 4px 1px 1px #000;
-}
-
-/* Estilo de la categoría */
-.category {
+  }
+  
+  /* Estilo de la categoría */
+  .category {
 	color: var(--color-primary);
 	font-weight: bold;
 	font-size: 0.9rem;
 	text-transform: uppercase;
-}
-
-/* Estilo del excerpt */
-.excerpt {
+  }
+  
+  /* Estilo del excerpt */
+  .excerpt {
 	color: #000;
 	font-size: 1rem;
 	line-height: 1.4;
 	margin: 0.5rem 0;
 	border-left: 4px solid #000;
 	padding-left: 1rem;
-}
-
-/* Estilo del botón "Ver post" */
-.read-more {
+  }
+  
+  /* Estilo del botón "Ver post" */
+  .read-more {
 	background-color: var(--color-primary);
 	color: var(--color-text-light);
 	border: 4px solid #000;
@@ -99,21 +118,47 @@ console.log('Slug en PostCard:', slug);
 	text-transform: uppercase;
 	text-decoration: none;
 	transition: none;
-}
-
-.read-more:hover {
-	background-color: var(--color-background); /* Fondo amarillo fuerte */
-	color: var(--color-text); /* Texto negro */
-}
-@media (min-width: 768px) {
-  .post-card {
-    flex-direction: column;
   }
-  .post-image {
-    width: 50%;
   
+  .read-more:hover {
+	background-color: var(--color-background);
+	color: var(--color-text);
   }
- 
-}
-
-</style>
+  
+  /* Estilos para pantallas grandes */
+  @media (min-width: 768px) {
+	.post-card {
+	  flex-direction: row;
+	  gap: 1.5rem;
+	}
+	
+	.post-image {
+	  width: 50%;
+	}
+	
+	.post-content {
+	  width: 50%;
+	}
+  }
+  
+  /* Estilos responsivos para móviles */
+  @media (max-width: 768px) {
+	.post-image {
+	  width: 100%;
+	}
+  
+	.post-article-image {
+	  width: 100%;
+	  height: auto;
+	}
+  
+	.post-content h2 {
+	  font-size: 1.2rem;
+	}
+  
+	.excerpt {
+	  font-size: 0.9rem;
+	}
+  }
+  </style>
+  

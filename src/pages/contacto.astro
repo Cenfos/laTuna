@@ -3,79 +3,102 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Contacto">
-  <h1 class="title-section">Necesitas a la tuna? ¡No dudes en contactarnos!</h1>
-  <h2 class="title-section">Únete a la Tuna, No hace falta saber cantar o tocar pues nosotros te enseñamos; lo importante son las ganas. Te esperamos!</h2>
+  <h1 class="title-section">¿Necesitas a la tuna? ¡No dudes en contactarnos!</h1>
+  <h2 class="title-section">Únete a la Tuna. No hace falta saber cantar o tocar, nosotros te enseñamos. ¡Lo importante son las ganas, te esperamos!</h2>
+  
   <div class="contact-container">
     <section class="contact-info">
       <h2 class="title-section">Otras formas de contactarnos</h2>
       <ul class="footer-section-links-social">
         <li><a href="mailto:contratacion@tunaderechosantiago.com" target="_blank" rel="noopener noreferrer">
-          <img src ="/images/correo.png" alt="Email" width="44" height="44" /></a></li>
+          <img src="/images/correo.png" alt="Email" width="44" height="44" /></a></li>
         <li><a href="https://wa.me/34661700823" target="_blank" rel="noopener noreferrer">
-          <img src ="/images/whatsapp.png" alt="WhatsApp" width="44" height="44" /></a></li>
+          <img src="/images/whatsapp.png" alt="WhatsApp" width="44" height="44" /></a></li>
         <li><a href="tel:+34661700823">
-          <img src ="/images/telefono.png" alt="Llamada" width="44" height="44" /></a></li>
+          <img src="/images/telefono.png" alt="Llamada" width="44" height="44" /></a></li>
       </ul>
       <img src="/images/tuna_en_colombia.jpg" alt="Descripción de la imagen" class="contact-image" />
     </section>
 
-    <form          
+    <!-- Formulario de contacto -->
+    <form
       name="contact"
       method="POST"
       data-netlify-recaptcha="true"
       data-netlify="true"
       netlify-honeypot="bot-field"
+      id="contactForm"
     >
       <input type="hidden" name="form-name" value="contact" />
       <input type="hidden" name="bot-field" />
+      
       <h2 class="title-section">Formulario de contacto</h2>
-
+      
       <p>
-        <label>
-          Nombre (obligatorio): <input type="text" name="name" required />
-        </label>
+        <label>Nombre (obligatorio): <input type="text" name="name" required /></label>
       </p>
-
-      <p >
-        <label>
-          Correo Electrónico (obligatorio): <input type="email" name="email" required />
-        </label>
-      </p>
-
+      
       <p>
-        <label>
-          Teléfono: <input type="tel" name="phone" />
-        </label>
+        <label>Correo Electrónico (obligatorio): <input type="email" name="email" required /></label>
       </p>
-
-      <p >
-        <label>
-          Asunto: <input type="text" name="subject" />
-        </label>
-      </p>
-
+      
       <p>
-        <label>
-          Mensaje: <textarea name="message"></textarea>
-        </label>
+        <label>Teléfono: <input type="tel" name="phone" /></label>
+      </p>
+      
+      <p>
+        <label>Asunto: <input type="text" name="subject" /></label>
+      </p>
+      
+      <p>
+        <label>Mensaje: <textarea name="message"></textarea></label>
       </p>
 
       <p class="checkbox-container">
         <label for="privacy-policy">
-          Acepto la <a href="./../politica-privacidad" target="_blank">Política de Privacidad</a>
+          <p>Acepto la <a href="./../politica-privacidad" target="_blank">Política de Privacidad</a></p>
           <input type="checkbox" id="privacy-policy" name="privacy-policy" required />
         </label>
       </p>
 
       <div data-netlify-recaptcha="true"></div>
-
+      
       <p>
         <button type="submit">Enviar</button>
       </p>
     </form>
-    
+
+    <!-- Modal de éxito -->
+    <div id="successModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <p>¡Tu mensaje se ha enviado con éxito!</p>
+        <button id="acceptButton">Aceptar</button>
+      </div>
+    </div>
+
   </div>
 </Layout>
+
+<!-- JavaScript para el modal -->
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevenir el envío predeterminado
+
+    // Simular el envío correcto del formulario
+    setTimeout(function() {
+      // Mostrar el modal cuando el envío sea exitoso
+      document.getElementById('successModal').style.display = 'block';
+    }, 1000);
+
+    return false;
+  });
+
+  // Función para cerrar el modal y redirigir
+  document.getElementById('acceptButton').addEventListener('click', function() {
+    document.getElementById('successModal').style.display = 'none';
+    window.location.href = '/contacto'; // Redirigir a la página de contacto
+  });
+</script>
 
 <style>
   .title {
@@ -172,7 +195,9 @@ import Layout from "../layouts/Layout.astro";
     width: 100%; /* Ancho completo para la imagen */
     height: auto; /* Mantiene la proporción de la imagen */
   }
-
+p {
+  color:#080808
+}
 
   @media (min-width: 768px) {
     .contact-container {
