@@ -53,17 +53,3 @@ const servicios = [
       
   </section>
 </Layout>
-<Layout title="Servicios de la Tuna">
-  <h1>Servicios de la Tuna, pide presupuesto sin compromiso!</h1>
-  <section class="services-section">
-    <div class="services-grid">
-      {servicios.map((servicio) => (
-        <Card
-          title={servicio.title}
-          body={servicio.body}
-          href={`/contacto`}         
-        />
-      ))}
-    </div>
-  </section>
-</Layout>

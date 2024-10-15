@@ -51,12 +51,6 @@ main {
     margin: 0 auto;
     box-sizing: border-box;
 }
-p, li {
-	font-weight: 500;
-	color: var(--color-text-light);
-	margin-bottom: 10px;
-}
-
 a {
 	color: var(--color-primary);
 	text-decoration: none;
