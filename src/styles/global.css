@@ -99,9 +99,3 @@ section {
     color: var(--color-primary);
 }
 
-/* Eliminación de sombras */
-* {
-	box-shadow: none;
-	border-radius: 0;
-}
-
