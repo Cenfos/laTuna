@@ -32,3 +32,57 @@ posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).get
 	</section>
     )}
 </Layout>
+<style is:global>
+	/* Contenedor de la lista de posts */
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Añade separación entre las tarjetas */
+  padding: 2rem;
+}
+
+/* Estilos individuales para cada PostCard */
+.post-card {
+  padding: 1.5rem;
+  background-color: #fff; /* Fondo blanco */
+  border: 3px solid #0b0b0b; /* Borde ligero para delimitar */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añade una sombra sutil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto suave en hover */
+}
+
+/* Efecto hover para resaltar el post */
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada en hover */
+}
+
+/* Asegúrate de que las imágenes y el contenido dentro del PostCard estén bien espaciados */
+.post-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-card p {
+  margin-bottom: 1rem;
+  color: #555; /* Color de texto más suave para el extracto */
+}
+
+/* Para pantallas más pequeñas (responsivo) */
+@media (max-width: 768px) {
+  section {
+    padding: 1rem;
+  }
+
+  .post-card {
+    padding: 1rem;
+  }
+}
+
+</style>

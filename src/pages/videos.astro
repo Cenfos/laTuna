@@ -1,149 +1,162 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 const videos = [
-	{
-		title: "Concierto Ruela 8",
-		url: "https://www.youtube.com/watch?v=1zhLc-fHy1Q",
-	},
-	{
-		title: "Las manos de mi madre - XXV Aniversario de la Tuna de Derecho de Santiago de Compostela",
-		url: "https://www.youtube.com/watch?v=zXbqD7ciO5Q",
-	},
-	{
-		title: "Actuación en el XXX Certamen de Tunas Ciudad de León",
-		url: "https://www.youtube.com/watch?v=TsrgX6nhaZc",
-	},
-	{
-		title: "Ruela 8, nuevo disco de Tuna de Derecho de Santiago de Compostela",
-		url: "https://www.youtube.com/watch?v=bw2ZMhsIszg&list=PLfVHA2R5kB0bSUwy4YXuHcj4wGDEq-9jR",
-	},
-	{
-		title: "Golpe de Mondariz /Pasarrúas de Pontevedra",
-		url: "https://www.youtube.com/watch?v=UwyNcYwQfpc",
-	},
-	{
-		title: "En la plaza, Tuna de Derecho de Santiago de Compostela",
-		url: "https://www.youtube.com/watch?v=FGIDbGCebbE",
-	},
-	{
-		title: "La tuna, plaza del obradoiro",
-		url: "https://www.youtube.com/watch?v=wQcFte5HhqU",
-	},
-	{
-		title: "Ruada na TVG - Tuna de Derecho de Santiago de Compostela",
-		url: "https://www.youtube.com/watch?v=xtlPlD5vY70",
-	},
-	{
-		title: "Fonseca - Tuna de Derecho de Santiago de Compostela",
-		url: "https://www.youtube.com/watch?v=KoP3dmC2fK0",
-	},
-	{
-		title: "Clavelitos - Tuna de Derecho de Santiago de Compostela",
-		url: "https://www.youtube.com/watch?v=NoyPEZCeNZw&list=PLJV_I-awm-kGcGkLePPPxKmp0F8YaNSP9&index=1",
-	},
-	{ 
-		title: "La canción de los idiomas - Tuna de Derecho de Santiago de Compostela",
-		url: "https://www.youtube.com/watch?v=d9BQReEGzm8",
-	},
-	{
-		title: "I Certamen de Tunas de Ciudades Patrimonio",
-		url: "https://www.youtube.com/watch?v=1G3yp21rOnA",
-	},
-	{
-		title: "Concierto 25 aniversario de la Tuna de Derecho de Santiago de Compostela",
-		url: "https://www.youtube.com/watch?v=6UdWgF8KPkA",	
-	},
-	{
-		title: "En la plaza del Obradoiro, actuación diaria",
-		url: "https://www.youtube.com/watch?v=JbMlKFHc14w",	
-	},
-	{
-		title: "En la plaza, actuaciones diarias de la tuna",
-		url: "https://www.youtube.com/watch?v=VMLOH_evBhA",	
-	},
-	
+  {
+    title: "Concierto Ruela 8",
+    url: "https://www.youtube.com/watch?v=1zhLc-fHy1Q",
+  },
+  {
+    title:
+      "Las manos de mi madre - XXV Aniversario de la Tuna de Derecho de Santiago de Compostela",
+    url: "https://www.youtube.com/watch?v=zXbqD7ciO5Q",
+  },
+  {
+    title: "Actuación en el XXX Certamen de Tunas Ciudad de León",
+    url: "https://www.youtube.com/watch?v=TsrgX6nhaZc",
+  },
+  {
+    title: "Ruela 8, nuevo disco de Tuna de Derecho de Santiago de Compostela",
+    url: "https://www.youtube.com/watch?v=bw2ZMhsIszg&list=PLfVHA2R5kB0bSUwy4YXuHcj4wGDEq-9jR",
+  },
+  {
+    title: "Golpe de Mondariz /Pasarrúas de Pontevedra",
+    url: "https://www.youtube.com/watch?v=UwyNcYwQfpc",
+  },
+  {
+    title: "En la plaza, Tuna de Derecho de Santiago de Compostela",
+    url: "https://www.youtube.com/watch?v=FGIDbGCebbE",
+  },
+  {
+    title: "La tuna, plaza del obradoiro",
+    url: "https://www.youtube.com/watch?v=wQcFte5HhqU",
+  },
+  {
+    title: "Ruada na TVG - Tuna de Derecho de Santiago de Compostela",
+    url: "https://www.youtube.com/watch?v=xtlPlD5vY70",
+  },
+  {
+    title: "Fonseca - Tuna de Derecho de Santiago de Compostela",
+    url: "https://www.youtube.com/watch?v=KoP3dmC2fK0",
+  },
+  {
+    title: "Clavelitos - Tuna de Derecho de Santiago de Compostela",
+    url: "https://www.youtube.com/watch?v=NoyPEZCeNZw&list=PLJV_I-awm-kGcGkLePPPxKmp0F8YaNSP9&index=1",
+  },
+  {
+    title:
+      "La canción de los idiomas - Tuna de Derecho de Santiago de Compostela",
+    url: "https://www.youtube.com/watch?v=d9BQReEGzm8",
+  },
+  {
+    title: "I Certamen de Tunas de Ciudades Patrimonio",
+    url: "https://www.youtube.com/watch?v=1G3yp21rOnA",
+  },
+  {
+    title:
+      "Concierto 25 aniversario de la Tuna de Derecho de Santiago de Compostela",
+    url: "https://www.youtube.com/watch?v=6UdWgF8KPkA",
+  },
+  {
+    title: "En la plaza del Obradoiro, actuación diaria",
+    url: "https://www.youtube.com/watch?v=JbMlKFHc14w",
+  },
+  {
+    title: "En la plaza, actuaciones diarias de la tuna",
+    url: "https://www.youtube.com/watch?v=VMLOH_evBhA",
+  },
 ];
 
 // Función para extraer la miniatura de YouTube
 const getThumbnail = (url) => {
-	const videoId = new URL(url).searchParams.get("v");
-	return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  const videoId = new URL(url).searchParams.get("v");
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 };
 ---
 
 <Layout title="Vídeos de la Tuna de Derecho de Santiago de Compostela">
-	<h1 class="intro">Vídeos de la Tuna de Derecho de Santiago de Compostela</h1>
-	<p class="intro">¡Aquí encontrarás los últimos vídeos de la Tuna de Derecho Compostelana!</p>
-	
-	<section class="videos">
-		
-		<div class="video-grid">
-			{videos.map(video => (
-				<div class="video-card">
-					<a href={video.url} target="_blank" rel="noopener noreferrer">
-						<img src={getThumbnail(video.url)} alt={video.title} class="video-thumbnail" />
-						<h3>{video.title}</h3>
-					</a>
-				</div>
-			))}
-		</div>
-	</section>
+  <h1 class="intro">Vídeos de la Tuna de Derecho de Santiago de Compostela</h1>
+  <p class="intro">
+    ¡Aquí encontrarás los últimos vídeos de la Tuna de Derecho Compostelana!
+  </p>
 
-	<div class="view-all-container">
-		<a href="/videos" class="button" >Inicio</a>
-	</div>
+  <section class="videos">
+    <div class="video-grid">
+      {
+        videos.map((video) => (
+          <div class="video-card">
+            <a href={video.url} target="_blank" rel="noopener noreferrer">
+              <img
+                src={getThumbnail(video.url)}
+                alt={video.title}
+                class="video-thumbnail"
+              />
+              <h3>{video.title}</h3>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <div class="view-all-container">
+    <a href="/videos" class="button">Inicio</a>
+  </div>
+   
+
+
+  <style is:global>
+    .intro {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      background-color: #fff; /* Fondo blanco limpio */
+      border: none; /* Asegúrate de que no haya borde */
+      border-radius: 4px;
+      overflow: hidden;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease; /* Transición para sombra */
+      text-align: justify;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
+    }
+
+    .video-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumentar sombra al hacer hover */
+    }
+
+    .video-card a {
+      text-decoration: none;
+      color: inherit;
+      border: none; /* Asegúrate de que no haya borde */
+      display: block;
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      height: auto;
+      border: none; /* Asegúrate de que no haya borde */
+    }
+
+    .video-card h3 {
+      padding: 0.5rem;
+      font-size: 1.2rem; /* Tamaño de fuente */
+      color: rgb(10, 10, 10); /* Color del texto */
+      margin: 0; /* Eliminar margen para un mejor ajuste */
+    }
+
+    .view-all-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
 </Layout>
-<style is:global>
-
-	.intro {
-		text-align: center;
-		margin-bottom: 2rem;
-	}
-
-	.video-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-		gap: 1.5rem;
-	}
-
-	.video-card {
-		background-color: #fff; /* Fondo blanco limpio */
-		border: none; /* Asegúrate de que no haya borde */
-		border-radius: 4px;
-		overflow: hidden;
-		transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transición para sombra */
-		text-align: justify;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
-	}
-
-	.video-card:hover {
-		transform: scale(1.05);
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumentar sombra al hacer hover */
-	}
-
-	.video-card a {
-		text-decoration: none;
-		color: inherit;
-		border: none; /* Asegúrate de que no haya borde */
-		display: block;
-	}
-
-	.video-thumbnail {
-		width: 100%;
-		height: auto;
-		border: none; /* Asegúrate de que no haya borde */
-	}
-
-	.video-card h3 {
-		padding: 0.5rem;
-		font-size: 1.2rem; /* Tamaño de fuente */
-		color: rgb(10, 10, 10); /* Color del texto */
-		margin: 0; /* Eliminar margen para un mejor ajuste */
-	}
-
-	.view-all-container {
-		text-align: center;
-		margin-top: 2rem;
-	}
-</style>

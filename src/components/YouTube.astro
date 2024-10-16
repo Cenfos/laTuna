@@ -1,0 +1,91 @@
+---
+const YOUTUBE_API_KEY = 'RAGaawu0mEk-J0qRBkbegg'; // Reemplaza con tu clave de API de YouTube
+const CHANNEL_ID = 'UCRAGaawu0mEk-J0qRBkbegg'; // Reemplaza con tu ID de canal de YouTube
+
+let videos = [];
+let errorMessage = '';
+let loading = true;
+
+const fetchVideos = async () => {
+    try {
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10`);
+        
+        // Verifica si la respuesta es exitosa
+        if (!response.ok) {
+            throw new Error(`Error fetching videos: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        videos = data.items || []; // Asegúrate de que videos sea un array
+    } catch (error) {
+        errorMessage = error.message;
+    } finally {
+        loading = false; // Cambia el estado de carga
+    }
+};
+
+// Llama a la función para obtener los videos
+await fetchVideos();
+
+// Función para extraer la miniatura de YouTube
+const getThumbnail = (url) => {
+    const videoId = new URL(url).searchParams.get("v");
+    return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+};
+---
+
+<section class="youtube-videos">
+    <h2>Últimos Videos de YouTube</h2>
+    
+    {loading && <p>Cargando videos...</p>}
+    {errorMessage && <p>Error: {errorMessage}</p>}
+    
+    <div class="video-grid">
+        {videos.map(video => (
+            <div class="video-card">
+                <a href={`https://www.youtube.com/watch?v=${video.id.videoId}`} target="_blank" rel="noopener noreferrer">
+                    <img src={getThumbnail(`https://www.youtube.com/watch?v=${video.id.videoId}`)} alt={video.snippet.title} class="video-thumbnail" />
+                    <h3>{video.snippet.title}</h3>
+                </a>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .youtube-videos {
+        margin-top: 2rem;
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .video-card {
+        background-color: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-align: justify;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-thumbnail {
+        width: 100%;
+        height: auto;
+    }
+
+    .video-card h3 {
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        color: rgb(10, 10, 10);
+        margin: 0;
+    }
+</style>
