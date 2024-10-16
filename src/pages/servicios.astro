@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
 import Card from '../components/Card.astro';
+import CallToAction from 'components/CallToAction.astro';
 
 const servicios = [
   {   
@@ -26,7 +26,8 @@ const servicios = [
   },
   {    
     title: "DISCOS",
-    body: "Hemos grabado dos CDs y un DVD, y estamos en pleno proceso de grabación de nuevo material."
+    body: "Hemos grabado dos CDs y un DVD, y estamos en pleno proceso de grabación de nuevo material.",
+    href: "https://ruela8.tunaderechosantiago.com/" 
   },
   {    
     title: "Concierto en Plaza del Obradoiro",
@@ -41,15 +42,17 @@ const servicios = [
 
 <Layout title="Servicios de la Tuna">
   <h1>Servicios de la Tuna, pide presupuesto sin compromiso!</h1>
+
+  <CallToAction />
   <section class="services-section">
     <div class="services-grid">
       {servicios.map((servicio) => (
         <Card
           title={servicio.title}
           body={servicio.body}
-          href={`/contacto`}         
+          href={servicio.title === "DISCOS" ? servicio.href : "/contacto"} 
         />
       ))}
-      
+    </div>
   </section>
 </Layout>

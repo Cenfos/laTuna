@@ -45,11 +45,6 @@ import Layout from "../layouts/Layout.astro";
       <p>
         <label>Teléfono: <input type="tel" name="phone" /></label>
       </p>
-      
-      <p>
-        <label>Asunto: <input type="text" name="subject" /></label>
-      </p>
-      
       <p>
         <label>Mensaje: <textarea name="message"></textarea></label>
       </p>
@@ -99,26 +94,39 @@ import Layout from "../layouts/Layout.astro";
     window.location.href = '/contacto'; // Redirigir a la página de contacto
   });
 </script>
-
 <style>
   .title {
     text-align: center;
     margin-top: 2rem;
-    color:rgb(9, 9, 9);
+    color: rgb(9, 9, 9);
   }
 
   .subtitle {
     text-align: center;
     margin-bottom: 2rem;
   }
+  p a {
+  color: black; /* Letra en negro */
+  text-decoration: none; /* Sin subrayado */
+  border: none; /* Sin borde */
+  padding: 0; /* Sin padding */
+  box-shadow: none; /* Sin sombras */
+}
+
+p a:hover {
+  color: #ea1010; /* Letra en rojo al hacer hover */
+  text-decoration: none; /* Asegura que no haya subrayado en hover */
+  background-color: transparent; /* Fondo transparente */
+}
+
 
   .contact-container {
-    display: flex; /* Utiliza Flexbox para dividir en columnas */
-    justify-content: space-between; /* Espacio entre columnas */
+    display: flex; 
+    justify-content: space-between; 
     align-items: flex-start; /* Alineación superior */
     margin: 0 auto;
-    max-width: 1200px; /* Máxima anchura del contenedor */
-    gap: 20px; /* Espacio entre columnas */
+    max-width: 1200px; 
+    gap: 20px; 
   }
 
   form {
@@ -126,12 +134,13 @@ import Layout from "../layouts/Layout.astro";
     flex-direction: column;
     max-width: 500px;
     margin: 0 auto;
-    text-align: center; /* Centra el contenido del formulario */
     margin-top: 3rem;
   }
 
   label {
     margin-top: 1rem;
+    text-align: left; 
+    font-weight: bold;
   }
 
   input,
@@ -140,41 +149,71 @@ import Layout from "../layouts/Layout.astro";
     margin-top: 0.25rem;
     width: 100%;
     box-sizing: border-box;
-    border: 4px solid #080808;    
+    border: 2px solid #080808; /* Borde más fino para mayor claridad */
+    border-radius: 4px; /* Borde redondeado */
+    font-size: 1rem;
   }
 
   button {
-    background-color: #ea1010;
-    color: white;
-    border: none;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #080808; /* Texto negro */
+    border: 2px solid #080808; /* Borde negro */
     padding: 0.75rem 1.5rem;
     margin-top: 1.5rem;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza la transición del hover */
   }
 
   button:hover {
-    background-color: #0303037d;
+    background-color: #ea1010; /* Hover rojo */
+    color: #ffffff; /* Texto blanco */
   }
 
+  /* Estilos adicionales para enlaces */
   a {
-    
+    color: #080808;
     text-decoration: none;
-
-  }
-  
-
-  /* Alineación y estilo del checkbox y texto */
-  .checkbox-container {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centra el contenido dentro del formulario */   
   }
 
-  .checkbox-container input[type="checkbox"] {
-    margin-right: 0.5rem;
-    transform: scale(1.5); /* Aumenta el tamaño del checkbox */
-  }
+  /* Contenedor del checkbox para darle un margen adecuado respecto al enlace */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio prudencial entre el enlace y el checkbox */
+}
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #090909;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative; /* Para posicionar el ::before dentro del checkbox */
+}
+
+input[type="checkbox"]:checked {
+  border-color: #ea1010;
+}
+
+/* Estilo para la marca de verificación */
+input[type="checkbox"]:checked::before {
+  content: '✓';
+  color: rgb(250, 5, 5);
+  font-size: 22px;
+  font-weight: bold; /* Más gruesa */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%); /* Centrar la marca dentro del checkbox */
+  line-height: 1;
+  display: block;
+  text-align: center;
+}
+
 
   ul {
     list-style-type: none; /* Elimina los puntos de la lista */
@@ -185,6 +224,7 @@ import Layout from "../layouts/Layout.astro";
   .contact-info {
     max-width: 400px; /* Anchura máxima para la sección de contacto */
   }
+
   .contact-info a {
     color: white; /* Cambia el color de los enlaces a blanco */
     text-decoration: underline; /* Asegura que los enlaces sean subrayados */
@@ -195,9 +235,10 @@ import Layout from "../layouts/Layout.astro";
     width: 100%; /* Ancho completo para la imagen */
     height: auto; /* Mantiene la proporción de la imagen */
   }
-p {
-  color:#080808
-}
+
+  p {
+    color: #080808;
+    }
 
   @media (min-width: 768px) {
     .contact-container {
@@ -205,17 +246,17 @@ p {
       justify-content: space-between; /* Espacio entre columnas */
     }
   }
+
   @media (max-width: 1024px) {
-  .contact-container {
-    flex-direction: column; /* Mantiene el diseño en una sola columna para tabletas */
+    .contact-container {
+      flex-direction: column; /* Mantiene el diseño en una sola columna para tabletas */
+    }
   }
-}
 
-@media (min-width: 1025px) {
-  .contact-container {
-    flex-direction: row; /* Cambia a columnas en pantallas más grandes */
-    justify-content: space-between; /* Espacio entre columnas */
+  @media (min-width: 1025px) {
+    .contact-container {
+      flex-direction: row; /* Cambia a columnas en pantallas más grandes */
+      justify-content: space-between; /* Espacio entre columnas */
+    }
   }
-}
-
 </style>

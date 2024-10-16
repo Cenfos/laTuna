@@ -1,0 +1,86 @@
+---
+
+const socialLinks = [
+  {
+    href: "https://www.instagram.com/tunaderechosantiago/",
+    imgSrc: "/images/instagram.png",
+    alt: "Instagram",
+  },
+  {
+    href: "https://www.facebook.com/TunaDerechoSantiago?fref=ts",
+    imgSrc: "/images/facebook.png",
+    alt: "Facebook",
+  },
+  {
+    href: "https://x.com/TunaDerechoSCQ?lang=es",
+    imgSrc: "/images/gorjeo.png",
+    alt: "X",
+  },
+  {
+    href: "https://www.tripadvisor.es/Attraction_Review-g187508-d6033163-Reviews-Tuna_de_Derecho_de_Santiago-Santiago_de_Compostela_Province_of_A_Coruna_Galicia.html",
+    imgSrc: "/images/tripadvisor.png",
+    alt: "TripAdvisor",
+  },
+  {
+    href: "https://open.spotify.com/intl-es/artist/3FuGDKJNi4Sl3nqicYGvEh?si=pVornidQSQWOkV4J-8E2ZQ",
+    imgSrc: "/images/spotify1.png",
+    alt: "Spotify",
+  },
+];
+---
+
+<div class="footer-section-social">
+  <h3 class="title">Redes sociales</h3>
+  <ul class="footer-section-links-social">
+    {socialLinks.map(link => (
+      <li>
+        <a href={link.href} target="_blank" rel="noopener noreferrer">
+          <img src={link.imgSrc} alt={link.alt} width="44" height="44" />
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style is:global>
+.footer-section-social {
+  text-align: center; /* Centra el contenido */
+  margin-top: 20px; /* Espaciado superior */
+}
+
+.footer-section-links-social {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+/* Estilos para los iconos de redes sociales */
+.footer-section-links-social a {
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  background-color: transparent; /* Asegurar que no haya fondo */
+  color: inherit; /* Mantener el color del texto o icono */
+}
+
+.footer-section-links-social a:hover {
+  background-color: transparent; /* Sobrescribir cualquier fondo en hover */
+  color: inherit; /* Mantener el color original */
+  border: none; /* Sin bordes en hover */
+}
+
+/* Añadir solo la animación de escala a los iconos de redes sociales */
+.footer-section-links-social a img {
+  transition: transform 0.3s ease;
+  border: none; /* Sin bordes */
+  box-shadow: none; /* Sin sombra */
+}
+
+/* Escala cuando el icono se pasa por encima */
+.footer-section-links-social a img:hover {
+  transform: scale(1.2);
+}
+</style>

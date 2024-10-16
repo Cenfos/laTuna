@@ -36,6 +36,8 @@ const currentYear = new Date().getFullYear();
 				<img src="/images/gorjeo.png" alt="X" width="44" height="44" /></a></li>
 			  <li><a href="https://www.tripadvisor.es/Attraction_Review-g187508-d6033163-Reviews-Tuna_de_Derecho_de_Santiago-Santiago_de_Compostela_Province_of_A_Coruna_Galicia.html" target="_blank" rel="noopener noreferrer">
 				<img src="/images/tripadvisor.png" alt="TripAdvisor" width="44" height="44" /></a></li>
+				<li><a href="https://open.spotify.com/intl-es/artist/3FuGDKJNi4Sl3nqicYGvEh?si=pVornidQSQWOkV4J-8E2ZQ" target="_blank" rel="noopener noreferrer">
+					<img src="/images/spotify1.png" alt="Spotify" width="44" height="44" /></a></li>
 			</ul>
 		</div>
 		<div class="footer-section">
@@ -49,6 +51,7 @@ const currentYear = new Date().getFullYear();
 </footer>
 
 <style is:global>
+/* Estilos generales del footer */
 .footer-content {
 	display: flex;
 	flex-wrap: wrap;
@@ -56,13 +59,13 @@ const currentYear = new Date().getFullYear();
 	gap: 40px;
 	padding: 20px;
 	background-color: #cec8c8;
-	text-align: center; /* Centra el texto */
+	text-align: center;
 }
 
 .footer-section {
 	flex: 1;
-	min-width: 250px; 
-	max-width: 300px; 
+	min-width: 250px;
+	max-width: 300px;
 	margin: 20px;
 }
 
@@ -75,15 +78,21 @@ const currentYear = new Date().getFullYear();
 	margin-bottom: 20px;
 }
 
+/* Estilos de los enlaces dentro de las secciones del footer */
 .footer-section-links a {
 	color: #333;
 	text-decoration: none;
+	border: none;
+	padding: 0;
+	box-shadow: none;
 }
 
 .footer-section-links a:hover {
-	color: var(--color-background);
+	color: red;
+	background-color: transparent;
 }
 
+/* Contenedor de los iconos sociales */
 .footer-section-links-social {
 	margin-top: 30px;
 	display: flex;
@@ -93,12 +102,30 @@ const currentYear = new Date().getFullYear();
 	list-style: none;
 }
 
+/* Estilos para los iconos de redes sociales */
+.footer-section-links-social a {
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    background-color: transparent; /* Asegurar que no haya fondo */
+    color: inherit; /* Mantener el color del texto o icono */
+}
+.footer-section-links-social a:hover {
+    background-color: transparent; /* Sobrescribir cualquier fondo en hover */
+    color: inherit; /* Mantener el color original */
+    border: none; /* Sin bordes en hover */
+}
+/* Añadir solo la animación de escala a los iconos de redes sociales */
 .footer-section-links-social a img {
 	transition: transform 0.3s ease;
+	border: none; /* Sin bordes */
+	box-shadow: none; /* Sin sombra */
 }
 
+/* Escala cuando el icono se pasa por encima */
 .footer-section-links-social a img:hover {
-	transform: scale(1.1);
+	transform: scale(1.2);	
+	
 }
 
 .address {
