@@ -11,7 +11,7 @@ import { Icon } from "astro-icon";
   />
 </head>
 
-<header>
+<header id="header">
   <div class="header-content">
     <div id="menu-title" class="menu-title">
       <h4 class="protest-strike-regular">
@@ -38,147 +38,223 @@ import { Icon } from "astro-icon";
   const menuToggle = document.getElementById("menu-toggle");
   const mainNav = document.getElementById("main-nav");
   const menuTitle = document.getElementById("menu-title");
+  const header = document.getElementById("header");
 
   if (menuToggle && mainNav) {
     menuToggle.addEventListener("click", () => {
       mainNav.classList.toggle("show");
-      menuTitle.classList.toggle("hidden"); // Cambia la visibilidad del título
     });
   }
+
+  // Añadir evento para el scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
 </script>
 
-<style  is:global>
-/* Header */
-header {
+<style is:global>
+  /* Header */
+  header {
     background-image: url("/images/slide.jpg");
     background-size: cover;
     background-position: center;
     padding: 2rem;
-    position: relative; /* Para que el menú se posicione sobre la imagen */
-}
+    position: relative;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
 
-.header-content {
+  header.scrolled {
+    background-color: black;
+    background-image: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 1rem; /* Reducir el padding para modo minimalista */
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    position: relative; /* Aseguramos que el contenido esté sobre la imagen */
-    z-index: 2; /* Poner el contenido por encima de la imagen */
-}
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
 
-.logo {
-    width: 50px;
-    height: 50px;
-}
-
-/* Menú y título por encima de la imagen */
-.menu-title {
+  .menu-title {
     font-family: "Protest Strike", sans-serif;
     color: var(--color-text-light);
     text-align: center;
     flex-grow: 1;
     font-size: 4rem;
     padding: 0.5rem;
-    z-index: 2; /* Asegura que esté por encima de la imagen */
-}
+    z-index: 2;
+    transition: font-size 0.3s ease;
+  }
 
-nav {
+  header.scrolled .menu-title {
+    display: none; /* Ocultar título al hacer scroll */
+    transition: display 0.3s ease;
+  }
+
+  nav {
     display: flex;
     justify-content: center;
     font-size: large;
     flex-direction: row;
-    z-index: 2; /* Para que el menú esté por encima de la imagen */
-}
+    z-index: 2;
+  }
 
-nav ul {
+  nav ul {
     display: flex;
     list-style-type: none;
     padding: 0;
     margin: 0;
     justify-content: center;
-}
+  }
 
-nav li {
+  nav li {
     margin: 0 1.5rem;
-}
+  }
 
-nav a {
+  nav a {
     color: black;
     background-color: rgb(240, 233, 233);
-
     font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 0px;
     transition: background-color 0.3s;
-}
+  }
 
-nav a:hover {
+  nav a:hover {
     background-color: #ff0000;
     color: black;
-}
+  }
 
-/* Botón de menú oculto en pantallas grandes */
-#menu-toggle {
-    display: none; 
+  /* Estilos ajustados del botón de hamburguesa */
+  #menu-toggle {
+    display: none;
     background: none;
     border: none;
     color: var(--color-text-light);
     cursor: pointer;
     font-size: 24px;
-}
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+  }
 
-/* Estilos responsivos para móviles y tablets */
-@media (max-width: 768px) {
+  /* Cambios al hacer scroll */
+  header.scrolled #menu-toggle {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 0.5rem;
+    border-radius: 50%;
+  }
+
+  /* Estilos responsivos para móviles */
+  @media (max-width: 768px) {
     header {
-        background-color: rgb(0, 0, 0); /* Cambiamos el fondo a color sólido */
-        padding: 2rem;
-        background-image: none; /* Ocultamos la imagen de fondo */
+      padding: 2rem;
+      background-image: none;
+      background-color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header.scrolled {
+      position: relative; /* Ocultar el menú al hacer scroll */;
+    }
+    header.scrolled #menu-toggle {
+      background-color: black; /* Fondo negro en scroll */
+      color: white; /* Color blanco del icono */
     }
 
     .menu-title {
-        font-size: 2rem; /* Reducir el tamaño de la fuente en móviles */
+      font-size: 1.5rem;
     }
 
-    /* Mostrar el botón de menú en móviles y tablets */
+    /* Botón hamburguesa */
     #menu-toggle {
-        display: block; /* Mostrar el botón en pantallas pequeñas */
+      top: 10px;
+      right: 10px;
+      display: block; /* Mostrar el botón en móviles */
+      z-index: 1001; /* Asegura que la hamburguesa quede por encima */
+      color: white; /* Color blanco en móviles */
+      position: fixed;
+      font-size: 2rem;
     }
 
+    /* Ocultar el menú inicialmente */
     nav {
-        display: none; /* Esconder el menú inicialmente en móviles y tablets */
+      display: none;
     }
 
-    nav.show {
-        display: block; /* Mostrar el menú cuando esté activo */
-        background-color: var(--color-primary);
-        position: fixed;
-        top: 40px;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-    }
+    /* Mostrar el menú cuando esté activo con estilo de card */
+  nav.show {
+    display: block;
+    background-color: white; /* Fondo blanco para la card */
+    position: fixed;
+    top: 50px; /* Separar del borde superior */
+    left: 10%;
+    right: 10%;
+    width: 80%; /* Ancho ajustado */
+    z-index: 1000;
+    padding: 1rem;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de "card" */
+  }
 
-    nav ul {
-        flex-direction: column; /* Cambiar a dirección vertical */
-        align-items: center;
-        padding: 1rem;
-    }
+  /* Alinear los elementos del menú */
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1em;
+  }
 
-    nav li {
-        margin: 0.5rem 0; /* Espacio entre los elementos del menú */
-    }
-}
+  /* Espaciado entre elementos del menú */
+  nav li {
+    margin: 0.5rem 0;
+  }
 
-/* Estilos responsivos para tablets (más grandes que 768px pero menos que 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
+  /* Estilos de los enlaces en la card */
+  nav a {
+    background-color: #f0e9e9; /* Fondo de los botones en la card */
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  nav a:hover {
+    background-color: #ff0000; /* Fondo rojo al hacer hover */
+    color: white;
+  }
+  }
+
+  /* Estilos adicionales para tablets */
+  @media (min-width: 768px) and (max-width: 1024px) {
     header {
-        background-size: cover;
-        background-position: center;
+      background-size: cover;
+      background-position: center;
     }
 
     .menu-title {
-        font-size: 3rem; /* Ajustamos el tamaño de la fuente en tablets */
+      font-size: 3rem;
     }
-}
+  }
+
 </style>
